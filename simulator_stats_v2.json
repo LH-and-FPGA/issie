@@ -1,0 +1,140 @@
+{
+  "total_modules": 17,
+  "total_functions": 795,
+  "total_public_functions": 736,
+  "total_private_functions": 59,
+  "total_calls": 1093,
+  "most_called_functions": [
+    {
+      "function": "comp.FullName",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "rec.bigIntMask",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "CanvasExtractor.ins",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "BiBits.width",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "List.iteri2",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "mem.AddressWidth",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "mem.WordWidth",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "FastReduce.getRamStateMemory",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "comp.State",
+      "calls": 3,
+      "private": false
+    },
+    {
+      "function": "FastReduceTT.write",
+      "calls": 3,
+      "private": false
+    }
+  ],
+  "most_calling_functions": [
+    {
+      "function": "FastReduceTT.fastReduceFData",
+      "calls": 96,
+      "private": false
+    },
+    {
+      "function": "FastReduceTT.makeSplitOutput",
+      "calls": 76,
+      "private": false
+    },
+    {
+      "function": "FastReduce.fastReduce",
+      "calls": 43,
+      "private": false
+    },
+    {
+      "function": "FastRun.orderCombinationalComponents",
+      "calls": 11,
+      "private": true
+    },
+    {
+      "function": "SimulationGraphAnalyser.dfs",
+      "calls": 11,
+      "private": true
+    },
+    {
+      "function": "NumberHelpers.hexToBin",
+      "calls": 1,
+      "private": true
+    },
+    {
+      "function": "comp.BigIntState",
+      "calls": 0,
+      "private": false
+    },
+    {
+      "function": "BiBits.outs",
+      "calls": 0,
+      "private": false
+    },
+    {
+      "function": "rec.getBitsFromBigInt",
+      "calls": 0,
+      "private": false
+    },
+    {
+      "function": "rec.getBitsFromBigIntToUInt32",
+      "calls": 0,
+      "private": false
+    }
+  ],
+  "recursive_functions": [
+    {
+      "function": "FastReduceTT.makeSplitOutput",
+      "private": false
+    }
+  ],
+  "isolated_functions": [],
+  "key_functions_status": {
+    "startCircuitSimulation": {
+      "found": true,
+      "module": "Simulator",
+      "private": false
+    },
+    "buildFastSimulation": {
+      "found": true,
+      "module": "FastRun",
+      "private": false
+    },
+    "stepSimulation": {
+      "found": true,
+      "module": "FastRun",
+      "private": true
+    },
+    "fastReduce": {
+      "found": true,
+      "module": "FastReduce",
+      "private": false
+    }
+  }
+}

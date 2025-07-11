@@ -1,0 +1,7627 @@
+{
+  "modules": {
+    "BiBits": {
+      "file": "BiBits.fs",
+      "functions": [
+        "getBIBit",
+        "getBIBitsInt",
+        "width",
+        "lowerWord",
+        "offset",
+        "lowerChunk",
+        "upperChunk",
+        "getBIBits",
+        "lsw",
+        "outWidth",
+        "msw",
+        "outWords",
+        "floatCarryBit",
+        "addBIBits",
+        "outs",
+        "binopBIBits",
+        "invertBIBits",
+        "x",
+        "appendBIBits",
+        "outMSW",
+        "msw1",
+        "out"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    },
+    "CanvasExtractor": {
+      "file": "CanvasExtractor.fs",
+      "functions": [
+        "referenceEquality",
+        "sortQBy",
+        "logConnId",
+        "extractReducedState",
+        "comps",
+        "conns",
+        "portsEqual",
+        "stateIsEqual",
+        "comps1",
+        "comps2",
+        "stateIsEqualExInputDefault",
+        "verticesAreSame",
+        "diff",
+        "sq",
+        "printConnErrors",
+        "lengthDiff",
+        "compareConns",
+        "connIdA",
+        "connsA1",
+        "connsA2",
+        "connFixedOffset",
+        "xy",
+        "compareComps",
+        "byId",
+        "dx",
+        "dy",
+        "isClose",
+        "compareCanvas",
+        "compsOk",
+        "connsOk",
+        "comparesEqual",
+        "compareIOs",
+        "loadedComponentIsEqual",
+        "pp",
+        "loadedComponentIsEqualExInputDefault",
+        "getOrderedCompLabels",
+        "sortKey",
+        "parseDiagramSignature",
+        "inputs",
+        "outputs",
+        "extractLoadedSimulatorComponent",
+        "ldc",
+        "loadedComponentIsSameAsProject",
+        "ldcIsEq",
+        "ins",
+        "sort",
+        "addStateToLoadedComponents",
+        "getStateAndDependencies"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    },
+    "CanvasStateAnalyser": {
+      "file": "CanvasStateAnalyser.fs",
+      "functions": [
+        "portNames",
+        "getPortName",
+        "pNames",
+        "getIdx",
+        "idx",
+        "getAllInputPortIds",
+        "getAllOutputPortIds",
+        "genMaps",
+        "labComps",
+        "idToComp",
+        "targetIsLabel",
+        "sourceIsLabel",
+        "splitBy",
+        "labTargetConns",
+        "labSourceConns",
+        "normalise",
+        "normaliseL",
+        "idToInputPort",
+        "idToOutputPort",
+        "otherInputPorts",
+        "otherOutputPorts",
+        "labGroup",
+        "labInputPorts",
+        "labOutputPorts",
+        "checkPortTypesAreConsistent",
+        "checkComponentPorts",
+        "checkComponentsPorts",
+        "checkConnectionPort",
+        "checkConnectionsPorts",
+        "components",
+        "checkEvery",
+        "countPortsConnections",
+        "countsRes",
+        "key",
+        "checkCounts",
+        "totals",
+        "getPortNum",
+        "getRmInfoData",
+        "parentComp",
+        "portNum",
+        "portName",
+        "getInPortRmInfo",
+        "checkAllPorts",
+        "condDisconnected",
+        "condSelDisconnected",
+        "isDAndLoadDisconnected",
+        "isEnDisconnected",
+        "getOutPortRmInfo",
+        "getInErrType",
+        "getOutErrType",
+        "checkPortConnections",
+        "counts",
+        "port",
+        "rmInfo",
+        "checkConns",
+        "compOfPort",
+        "s",
+        "t",
+        "checkPortsAreConnectedProperly",
+        "m",
+        "conns",
+        "labMap",
+        "checkIOLabels",
+        "checkDuplicate",
+        "toMap",
+        "inputs",
+        "outputs",
+        "labels",
+        "checkCustomComponentForOkIOs",
+        "inouts",
+        "name",
+        "compare",
+        "checkCustomComponentsOk",
+        "error",
+        "disp",
+        "instIns",
+        "instOuts",
+        "checkAdderUnnecessaryNC",
+        "isNotConnected",
+        "getNCConnectedOutPorts",
+        "affectedPorts",
+        "affectedComps",
+        "affectedConns",
+        "checkConnectionsWidths",
+        "convertConnId",
+        "convertError",
+        "faulty",
+        "checkComponentNamesAreOk",
+        "badNameErrors",
+        "label",
+        "duplicateNameErrors",
+        "analyseState",
+        "widthErr"
+      ],
+      "private_functions": [
+        "getAllInputPortIds",
+        "getAllOutputPortIds",
+        "genMaps",
+        "checkPortTypesAreConsistent",
+        "checkEvery",
+        "countPortsConnections",
+        "checkCounts",
+        "getInPortRmInfo",
+        "getOutPortRmInfo",
+        "getInErrType",
+        "checkPortConnections",
+        "checkConns",
+        "checkPortsAreConnectedProperly",
+        "checkIOLabels",
+        "checkConnectionsWidths"
+      ],
+      "dependencies": []
+    },
+    "FastCreate": {
+      "file": "FastSim/FastCreate.fs",
+      "functions": [
+        "emptyGather",
+        "emptyFastSimulation",
+        "simulationPlaceholder",
+        "getFid",
+        "ff",
+        "getPortNumbers",
+        "ins",
+        "compType",
+        "findBigIntState",
+        "makeStepArray",
+        "makeIOArray",
+        "makeIOArrayW",
+        "createFastComponent",
+        "inPortNum",
+        "outs",
+        "state",
+        "fId",
+        "reduceIfHybrid",
+        "createFlattenedSimulation",
+        "graphL",
+        "allComps",
+        "labels",
+        "topGather",
+        "customComps",
+        "insideCustomGathers",
+        "ap",
+        "gatherT",
+        "compsInCustomComp",
+        "getCustomNameIdsOf",
+        "outputs",
+        "outLinks",
+        "out",
+        "inputs",
+        "inLinks",
+        "inp",
+        "gatherSimulation",
+        "startTime",
+        "addComponentWaveDrivers",
+        "makeWaveIndex",
+        "addStepArray",
+        "addWidth",
+        "ioLabelIsActive",
+        "index",
+        "addDriver",
+        "addWaveIndexAndDrivers",
+        "comps",
+        "addDrivers",
+        "linkFastCustomComponentsToDriverArrays",
+        "cid",
+        "ct",
+        "graph",
+        "portNum",
+        "addWavesToFastSimulation",
+        "waveComps",
+        "createInitFastCompPhase",
+        "numSteps",
+        "start",
+        "makeFastComp",
+        "comp",
+        "fc",
+        "sheetLabel",
+        "customSimSheetNames",
+        "labelPartStartIndex",
+        "customOutLookup",
+        "addSimSheetNames",
+        "addSimSheetPaths",
+        "simSheetNames",
+        "simSheetStructure",
+        "parent",
+        "reLinkIOLabels",
+        "labKey",
+        "fcActiveDriver",
+        "linkFastComponents",
+        "outer",
+        "sComps",
+        "fComps",
+        "getSComp",
+        "x",
+        "apOf",
+        "getLinks",
+        "sComp",
+        "fid",
+        "linked",
+        "fDriven",
+        "labelKey",
+        "determineBigIntState"
+      ],
+      "private_functions": [
+        "createFlattenedSimulation",
+        "reLinkIOLabels"
+      ],
+      "dependencies": []
+    },
+    "FastExtract": {
+      "file": "FastSim/FastExtract.fs",
+      "functions": [
+        "setSimulationInput",
+        "setSimulationInputFData",
+        "changeInput",
+        "fd",
+        "changeInputFData",
+        "changeInputBatch",
+        "extractStatefulComponents",
+        "extractFastSimulationOutput",
+        "extractFastSimulationOutputFData",
+        "evaluated",
+        "extractFastSimulationState",
+        "extractFastSimulationIOs",
+        "fs",
+        "inputs",
+        "out",
+        "extractFastSimulationIOsFData",
+        "getFLabel",
+        "fc",
+        "extractFastSimulationWidth",
+        "extractViewers",
+        "comps",
+        "viewers",
+        "width",
+        "compareLoadedStates",
+        "a",
+        "w",
+        "outputsAreTheSameAsDefault",
+        "outputarray",
+        "slicedArray",
+        "areAllElementsSame",
+        "getArrayOfOutputs"
+      ],
+      "private_functions": [
+        "setSimulationInput",
+        "setSimulationInputFData"
+      ],
+      "dependencies": []
+    },
+    "FastReduce": {
+      "file": "FastSim/FastReduce.fs",
+      "functions": [
+        "readMemoryAddrUInt32DataUInt32",
+        "outDataInt",
+        "readMemoryAddrUInt32DataBigInt",
+        "readMemoryAddrBigIntDataUInt32",
+        "readMemoryAddrBigIntDataBigInt",
+        "readMemoryFData",
+        "addr",
+        "writeMemory",
+        "intAddr",
+        "intData",
+        "writeMemoryAddrUInt32DataUInt32",
+        "writeMemoryAddrUInt32DataBigInt",
+        "writeMemoryAddrBigIntDataUInt32",
+        "writeMemoryAddrBigIntDataBigInt",
+        "getRamStateMemory",
+        "getRomStateMemory",
+        "fastReduce",
+        "componentType",
+        "n",
+        "simStep",
+        "simStepOld",
+        "bit0",
+        "bits",
+        "bit",
+        "w",
+        "outBits",
+        "inputNum",
+        "outNum",
+        "w0",
+        "bits0",
+        "out",
+        "fdIn",
+        "out0",
+        "cin",
+        "sum",
+        "mask",
+        "sumInt",
+        "cout",
+        "a",
+        "b",
+        "res",
+        "minusOne",
+        "mergeTwoValues",
+        "bits1",
+        "msBits",
+        "maxMsb",
+        "d",
+        "lastOut",
+        "enable",
+        "outData",
+        "mem",
+        "addressW",
+        "address",
+        "data"
+      ],
+      "private_functions": [
+        "readMemoryAddrUInt32DataUInt32"
+      ],
+      "dependencies": [
+        "BiBits",
+        "CanvasExtractor",
+        "FastCreate",
+        "FastReduceTT",
+        "GraphBuilder",
+        "rec"
+      ]
+    },
+    "FastReduceTT": {
+      "file": "FastSim/FastReduceTT.fs",
+      "functions": [
+        "fastReduceFData",
+        "componentType",
+        "simStep",
+        "simStepOld",
+        "fd",
+        "isAlgExp",
+        "inputs",
+        "makeSplitOutput",
+        "bits",
+        "exp",
+        "w",
+        "bit",
+        "outBits",
+        "newExp",
+        "inputNum",
+        "outNum",
+        "out",
+        "err",
+        "zeros",
+        "out0",
+        "sum",
+        "cin",
+        "mask",
+        "a",
+        "b",
+        "sumInt",
+        "cout",
+        "cinExp",
+        "out1",
+        "aExp",
+        "outDat",
+        "minusOne",
+        "numExp",
+        "wOut",
+        "b0",
+        "b1",
+        "exp1",
+        "exp0",
+        "fDataL",
+        "isAllData",
+        "inBitsAndWidths",
+        "mergeTwoValues",
+        "bits0",
+        "bits1",
+        "expi",
+        "d",
+        "lastOut",
+        "n",
+        "res",
+        "outData",
+        "mem",
+        "write",
+        "address",
+        "dataIn",
+        "io2",
+        "data"
+      ],
+      "private_functions": [],
+      "dependencies": [
+        "BiBits",
+        "CanvasExtractor",
+        "CanvasStateAnalyser",
+        "FastCreate",
+        "FastReduce",
+        "GraphBuilder",
+        "NumberHelpers",
+        "rec"
+      ]
+    },
+    "FastRun": {
+      "file": "FastSim/FastRun.fs",
+      "functions": [
+        "maxSimulationTime",
+        "numberOfStepsBeforeTimeCheck",
+        "isValidFData",
+        "isValidData",
+        "printComp",
+        "attr",
+        "ins",
+        "fc",
+        "printComps",
+        "orderCombinationalComponents",
+        "startTime",
+        "propagateEval",
+        "init",
+        "initInput",
+        "inputVal",
+        "initClockedOuts",
+        "initD",
+        "pp",
+        "readyL",
+        "orderedSet",
+        "orderCombinationalComponentsFData",
+        "calculateTotalSimArraySizePerStep",
+        "arraySumBy",
+        "width",
+        "checkAndValidate",
+        "start",
+        "activeComps",
+        "inSimulationComps",
+        "possibleCycleComps",
+        "checkAndValidateFData",
+        "data",
+        "createFastArrays",
+        "getArrayOf",
+        "buildFastSimulation",
+        "gather",
+        "fs",
+        "buildFastSimulationFData",
+        "propagateInputsFromLastStep",
+        "stepsim",
+        "vec",
+        "setInputstoDefault",
+        "stepSimulation",
+        "index",
+        "restartSimulation",
+        "runCombinationalLogic",
+        "runCombinationalLogicFData",
+        "runFastSimulation",
+        "simStartTime",
+        "stepsToDo",
+        "startTick",
+        "stepsBeforeCheck"
+      ],
+      "private_functions": [
+        "isValidFData",
+        "isValidData",
+        "printComps",
+        "orderCombinationalComponents",
+        "orderCombinationalComponentsFData",
+        "propagateInputsFromLastStep",
+        "setInputstoDefault",
+        "stepSimulation",
+        "restartSimulation"
+      ],
+      "dependencies": [
+        "FastExtract",
+        "FastReduce"
+      ]
+    },
+    "GraphBuilder": {
+      "file": "GraphBuilder.fs",
+      "functions": [
+        "getPortNumberOrFail",
+        "getValuesForPorts",
+        "buildSourceToTargetPortMap",
+        "key",
+        "target",
+        "newValue",
+        "mapInputPortIdToPortNumber",
+        "getDefaultState",
+        "compType",
+        "buildSimulationComponent",
+        "mapPortIdsToPortNumbers",
+        "outputs",
+        "drivenInputs",
+        "outputWidths",
+        "getLabelConnections",
+        "labels",
+        "compIdMap",
+        "getComp",
+        "targetMap",
+        "getConnection",
+        "copyConnection",
+        "getDriverConnection",
+        "dConn",
+        "buildSimulationGraph",
+        "addInputWidthsToInputs",
+        "compWithInput",
+        "inputs",
+        "components",
+        "labConns",
+        "connections",
+        "sourceToTargetPort",
+        "portIdToPortNumber",
+        "mapper",
+        "debugPrint",
+        "ws",
+        "findOutputWidths",
+        "comps",
+        "connsWidth",
+        "IOLabelsAsOutput",
+        "comp",
+        "pn",
+        "runCanvasStateChecksAndBuildGraph",
+        "outputsWidth",
+        "getSimulationIOs"
+      ],
+      "private_functions": [
+        "getPortNumberOrFail",
+        "getValuesForPorts",
+        "buildSourceToTargetPortMap",
+        "mapInputPortIdToPortNumber",
+        "getDefaultState",
+        "buildSimulationComponent",
+        "buildSimulationGraph",
+        "findOutputWidths"
+      ],
+      "dependencies": []
+    },
+    "GraphMerger": {
+      "file": "GraphMerger.fs",
+      "functions": [
+        "getComponentDependencies",
+        "components",
+        "getDependencyState",
+        "buildDependencyGraph",
+        "iterateChildren",
+        "children",
+        "dependencyGraph",
+        "checkDependencyCycle",
+        "exploreChildren",
+        "visited",
+        "currStack",
+        "buildDependencyMap",
+        "dependenciesRes",
+        "hasError",
+        "extractOk",
+        "checkDependenciesAndBuildMap",
+        "prettyPrintCycle",
+        "merger",
+        "currGraphCopy",
+        "newComp",
+        "resolveParametersInSimulationGraph",
+        "mergeDependencies"
+      ],
+      "private_functions": [
+        "getComponentDependencies",
+        "getDependencyState",
+        "buildDependencyGraph",
+        "checkDependencyCycle",
+        "buildDependencyMap",
+        "checkDependenciesAndBuildMap",
+        "merger"
+      ],
+      "dependencies": []
+    },
+    "NumberHelpers": {
+      "file": "NumberHelpers.fs",
+      "functions": [
+        "maxHexOnlyDisplayWidth",
+        "maxBinaryDisplayWidth",
+        "maxIssieBusWidth",
+        "maxNumericCharsBeforeTruncation",
+        "twosComp",
+        "twosCompValue",
+        "hexToBin",
+        "convert",
+        "digit",
+        "chars",
+        "firstDigit",
+        "hexBignum",
+        "hexDigitsBignum",
+        "hex32",
+        "hex32Filled",
+        "q",
+        "binBignum",
+        "hex",
+        "sDecBignum",
+        "decBignum",
+        "addCommasAndZeros",
+        "divCeiling",
+        "nonZeroDigits",
+        "numDigits",
+        "bitsPerDigit",
+        "extraZerosNum",
+        "digits",
+        "num4Chunks",
+        "commaSeparatedDigits",
+        "big8",
+        "big16",
+        "big32",
+        "big64",
+        "addZerosBignum",
+        "fillHexBignum",
+        "fillBinBignum",
+        "printWithFill",
+        "valToPaddedString",
+        "compress",
+        "maxChars",
+        "getPrefixAndDigits",
+        "pre",
+        "n",
+        "estimateCharLength",
+        "dotsLength",
+        "estimateLength",
+        "findBestLength",
+        "lastDigitIndex",
+        "find",
+        "sum",
+        "preLength",
+        "digitSpace",
+        "truncatedDigits",
+        "fastDataToPaddedString",
+        "displayRadix",
+        "signBit",
+        "signExtendedW",
+        "UInt32ToPaddedString",
+        "BigIntToPaddedString",
+        "bitToString",
+        "convertIntToWireData",
+        "padToWidth",
+        "toBit",
+        "intToBinary",
+        "bit",
+        "convertWireDataToInt",
+        "convertIntToFastData",
+        "convertBigintToFastData",
+        "b",
+        "convertBigintToUInt32",
+        "convertFastDataToBigint",
+        "convertFastDataToInt",
+        "convertFastDataToInt32",
+        "convertBigintToInt32",
+        "convertFastDataToWireData",
+        "bigToWire",
+        "convertWireDataToFastData",
+        "emptyFastData",
+        "strToBigint",
+        "removeCommas",
+        "str",
+        "success",
+        "countBits",
+        "log2Int",
+        "checkWidth",
+        "bitsCount",
+        "strToIntCheckWidth",
+        "toDecimal",
+        "convertBinToDec",
+        "width"
+      ],
+      "private_functions": [
+        "hexToBin",
+        "addCommasAndZeros",
+        "addZerosBignum",
+        "printWithFill",
+        "compress",
+        "countBits"
+      ],
+      "dependencies": []
+    },
+    "rec": {
+      "file": "SimGraphTypes.fs",
+      "functions": [
+        "katex",
+        "errMsg",
+        "data",
+        "getAlgExpWidth",
+        "w1",
+        "w2",
+        "flattenNestedArithmetic",
+        "multiplyByMinusOne",
+        "rhs",
+        "w",
+        "minusOne",
+        "assembleArithmetic",
+        "assemble",
+        "tryBitwiseOperation",
+        "checkList",
+        "newRemBits",
+        "widthL",
+        "remBits",
+        "tryMergeBitRanges",
+        "lHigh",
+        "uHigh",
+        "foldAppends",
+        "expToKatex",
+        "baseStr",
+        "arithmeticToKatex",
+        "katexStr",
+        "evalExp",
+        "evaluated",
+        "left",
+        "right",
+        "one",
+        "a1Eval",
+        "addition",
+        "increment",
+        "decrement",
+        "updateExpCount",
+        "newCount",
+        "width",
+        "flatLst",
+        "numVal",
+        "newExpTrack",
+        "numDataExp",
+        "expressionsToAssemble",
+        "bigIntMaskA",
+        "bigIntBitMaskA",
+        "bigIntMask",
+        "bigIntBitMask",
+        "fastBit",
+        "bitsToInt",
+        "bitsToBig",
+        "wireToFast",
+        "n",
+        "dat",
+        "fastToWire",
+        "fastDataZero",
+        "fastDataOne",
+        "b2s",
+        "lsw",
+        "hex",
+        "msws",
+        "getBits",
+        "outW",
+        "outWMask32",
+        "bits",
+        "mask",
+        "getBitsFromUInt32",
+        "getBitsFromBigInt",
+        "getBitsFromBigIntToUInt32"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    },
+    "SimTypes": {
+      "file": "SimTypes.fs",
+      "functions": [
+        "Width",
+        "fdToString",
+        "toExp",
+        "toFastData",
+        "ShortId",
+        "getSimSheetName",
+        "getFullSimName",
+        "getFullSimPath",
+        "graph_",
+        "fastSim_",
+        "numberBase_",
+        "clockTickNumber_",
+        "sprintSimComponent",
+        "shortPSComp",
+        "lab",
+        "printSimGraph",
+        "tryGetCompLabel",
+        "extractLabel",
+        "mapKeys",
+        "mapValues",
+        "mapItems"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    },
+    "SimulationGraphAnalyser": {
+      "file": "SimulationGraphAnalyser.fs",
+      "functions": [
+        "dfs",
+        "exploreChildren",
+        "currNode",
+        "inputPortNumber",
+        "curr",
+        "visited",
+        "currStack",
+        "calculateConnectionsAffected",
+        "findConnection",
+        "checkCombinatorialCycle",
+        "checkGraphForest",
+        "connectionsAffected",
+        "allIdsAndPNums",
+        "recursivelyCheckCombinatorialCycles",
+        "iterateChildren",
+        "childGraph",
+        "childName",
+        "alreadyChecked",
+        "inDependency",
+        "analyseSimulationGraph",
+        "getCombOuts"
+      ],
+      "private_functions": [
+        "dfs",
+        "calculateConnectionsAffected",
+        "checkCombinatorialCycle",
+        "recursivelyCheckCombinatorialCycles"
+      ],
+      "dependencies": []
+    },
+    "Simulator": {
+      "file": "Simulator.fs",
+      "functions": [
+        "cap",
+        "getSheet",
+        "getLdcList",
+        "getDirectDependencies",
+        "childrenOf",
+        "sheetsNeeded",
+        "children",
+        "getUpdatedLoadedComponentState",
+        "ldc",
+        "ldcs",
+        "ldcIsOpen",
+        "getCurrentSimulationState",
+        "simIsUpToDate",
+        "portSheetPort",
+        "comp",
+        "compPort",
+        "saveStateInSimulation",
+        "diagramName",
+        "compMap",
+        "comps",
+        "compsWithIds",
+        "addConnToPort",
+        "portsToConnections",
+        "portMap",
+        "validateCircuitSimulation",
+        "components",
+        "startCircuitSimulation",
+        "fs",
+        "inputs",
+        "startCircuitSimulationFData",
+        "simCacheInit",
+        "getFastSim",
+        "cacheIsEqual",
+        "storedstateisEqual",
+        "makeDummySimulationError",
+        "validateWaveSimulation",
+        "name",
+        "prepareSimulationMemoized",
+        "storedArraySize",
+        "isSame",
+        "simResult",
+        "fastSim"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    },
+    "SynchronousUtils": {
+      "file": "SynchronousUtils.fs",
+      "functions": [
+        "couldBeSynchronousComponent",
+        "getHybridComponentAsyncOuts",
+        "isHybridComponent",
+        "hasSynchronousComponents",
+        "getNodeOrFail",
+        "labelToPortNumber",
+        "getCustomCombinatorialOutputs",
+        "combOutputs",
+        "getCombinatorialOutputs",
+        "dfs",
+        "exploreChildren",
+        "visited",
+        "currNode",
+        "inputPortNumber",
+        "findCombinatorialPaths",
+        "labelToString",
+        "labelsToStrings",
+        "runDfs",
+        "_",
+        "res",
+        "outputsPNums",
+        "exploreNestedComponents",
+        "currStack",
+        "iterateNestedComponents",
+        "calculateCustomComponentsCombinatorialPaths"
+      ],
+      "private_functions": [
+        "labelToPortNumber",
+        "getCustomCombinatorialOutputs",
+        "dfs",
+        "findCombinatorialPaths",
+        "exploreNestedComponents"
+      ],
+      "dependencies": []
+    },
+    "TruthTableTypes": {
+      "file": "TruthTableTypes.fs",
+      "functions": [
+        "getLabel",
+        "getWidth",
+        "IsBits",
+        "IsDC",
+        "IsAlgebra",
+        "Inputs",
+        "rowContainsDC",
+        "rowContainsAlgebra",
+        "isEmpty",
+        "equalities_",
+        "inequalities_",
+        "isEqu",
+        "emptyConstraintSet",
+        "makeInequalityConstraint",
+        "range",
+        "orderConstraints",
+        "ordered",
+        "initTableInput",
+        "specificEqualities",
+        "specificInequalities",
+        "isAlg"
+      ],
+      "private_functions": [],
+      "dependencies": []
+    }
+  },
+  "calls": [
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 194
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 197
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 198
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigIntToUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 201
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 207
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 224
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.n",
+      "file": "FastSim/FastReduce.fs",
+      "line": 243
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 250
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 250
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w0",
+      "file": "FastSim/FastReduce.fs",
+      "line": 251
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 251
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 263
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 263
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w0",
+      "file": "FastSim/FastReduce.fs",
+      "line": 264
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 264
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 276
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 276
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 276
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 276
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 284
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 310
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 328
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 340
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 366
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduce.fs",
+      "line": 378
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 504
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 511
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 516
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.componentType",
+      "file": "FastSim/FastReduce.fs",
+      "line": 520
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 529
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduce.fs",
+      "line": 531
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduce.fs",
+      "line": 540
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 543
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.componentType",
+      "file": "FastSim/FastReduce.fs",
+      "line": 549
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 560
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 567
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 572
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.componentType",
+      "file": "FastSim/FastReduce.fs",
+      "line": 576
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 586
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduce.fs",
+      "line": 588
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduce.fs",
+      "line": 597
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 600
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.componentType",
+      "file": "FastSim/FastReduce.fs",
+      "line": 606
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 617
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 625
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 646
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.w",
+      "file": "FastSim/FastReduce.fs",
+      "line": 649
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 657
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.a",
+      "file": "FastSim/FastReduce.fs",
+      "line": 666
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.a",
+      "file": "FastSim/FastReduce.fs",
+      "line": 675
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 688
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 691
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 695
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 695
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 698
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 702
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 706
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 710
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mergeTwoValues",
+      "file": "FastSim/FastReduce.fs",
+      "line": 713
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 715
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "List.fold2",
+      "file": "FastSim/FastReduce.fs",
+      "line": 715
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mergeTwoValues",
+      "file": "FastSim/FastReduce.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.x",
+      "file": "FastSim/FastReduce.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "List.rev",
+      "file": "FastSim/FastReduce.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 721
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 728
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 733
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 733
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 734
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 740
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "GraphBuilder.outputWidths",
+      "file": "FastSim/FastReduce.fs",
+      "line": 740
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "List.map2",
+      "file": "FastSim/FastReduce.fs",
+      "line": 740
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "List.max",
+      "file": "FastSim/FastReduce.fs",
+      "line": 743
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 744
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduce.fs",
+      "line": 749
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastCreate.index",
+      "file": "FastSim/FastReduce.fs",
+      "line": 750
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 751
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastCreate.index",
+      "file": "FastSim/FastReduce.fs",
+      "line": 752
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 754
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 761
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 765
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 769
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 769
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigIntToUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 771
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigIntToUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 772
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 772
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigIntToUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 776
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 777
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 777
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 781
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigIntToUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 782
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 782
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 786
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "rec.getBitsFromBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 787
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 787
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 803
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 804
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 810
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 811
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 818
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 819
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.enable",
+      "file": "FastSim/FastReduce.fs",
+      "line": 822
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 828
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 829
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.enable",
+      "file": "FastSim/FastReduce.fs",
+      "line": 832
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 838
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 839
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 858
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 859
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 878
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 879
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 897
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduce.fs",
+      "line": 898
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.enable",
+      "file": "FastSim/FastReduce.fs",
+      "line": 917
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.enable",
+      "file": "FastSim/FastReduce.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 964
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 965
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 965
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 968
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 968
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 972
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 973
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 973
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 975
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 976
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 976
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 978
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 978
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 981
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 981
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 985
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 985
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 989
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 989
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 991
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 991
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 994
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 995
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 995
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 998
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 998
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1002
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1003
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1003
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1005
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1006
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1006
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1008
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1008
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1011
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1011
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1015
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1015
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1019
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1019
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1021
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1021
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1023
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1023
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1025
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1025
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1026
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1026
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1027
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1027
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1034
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1034
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1037
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1037
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1037
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1037
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1037
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1042
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1042
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1044
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1044
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1045
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1045
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1046
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1046
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1048
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1049
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1049
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1051
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1051
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1052
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1052
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1056
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1057
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1057
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1058
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1058
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1058
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1058
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1058
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1065
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1066
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1066
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1074
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1075
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1075
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1085
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1085
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "memory.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1086
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "memory.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1086
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "memory.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1087
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "memory.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1087
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1091
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1091
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1095
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1106
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.simStep",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1106
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1106
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1108
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1108
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1113
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1113
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1114
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1114
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1115
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1115
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.BigIntState",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1117
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1118
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1118
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1120
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "BiBits.outs",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1120
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1121
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.InputWidth",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1121
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1124
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1124
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1127
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1129
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1129
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1129
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1133
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.simStep",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1133
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1133
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1135
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1135
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1139
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1139
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1142
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1144
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1144
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1144
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1148
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.simStep",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1148
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1148
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrUInt32DataBigInt",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1150
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1150
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1154
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1154
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1157
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.writeMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1159
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1159
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.address",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1159
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1163
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.simStep",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1163
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "comp.State",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1163
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.readMemoryAddrBigIntDataUInt32",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1165
+    },
+    {
+      "from": "FastReduce.fastReduce",
+      "to": "FastReduce.mem",
+      "file": "FastSim/FastReduce.fs",
+      "line": 1165
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 28
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.ShortId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 29
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.InputLinks",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 33
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.OutputWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 39
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 40
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 40
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.Outputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 46
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 59
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.GetInputFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 64
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "GraphBuilder.pn",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 68
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.PutOutputFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 69
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 73
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 74
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "stateArr.Step",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 75
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.isAlgExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 97
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastCreate.inp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 98
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.isAlgExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 106
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.exists",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 106
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "el.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 109
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.reduce",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 110
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.exp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 112
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "d.GetQUint32",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 123
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.reduce",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 125
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.x",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 127
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.checkWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 143
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 143
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 146
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 149
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 150
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 153
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.makeSplitOutput",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 158
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 158
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.outNum",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 158
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 158
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 159
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 161
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 171
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 177
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 185
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.Active",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 191
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 192
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.checkWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 194
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 194
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 200
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 200
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 202
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.checkWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 204
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 204
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 207
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.checkWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 209
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 209
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 213
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 219
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 221
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 225
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 229
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 230
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 232
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 237
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 241
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 248
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 252
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 255
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 268
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 274
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 278
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 281
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 294
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.n",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 299
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 302
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 305
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 305
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 308
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 322
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 322
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 325
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 338
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 338
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 341
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 354
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 354
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.bits0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 355
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 355
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 367
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 368
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 368
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 369
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 370
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 375
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 375
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 375
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 375
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 375
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 379
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 379
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 380
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits2.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 380
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 384
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 385
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd1.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 386
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 401
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 402
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 402
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 403
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 404
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 410
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 414
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 414
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 415
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd2.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 415
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 416
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd3.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 416
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 417
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd4.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 417
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 418
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd5.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 418
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 419
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd6.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 419
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 420
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd7.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 420
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 424
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 425
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd1.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 426
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 445
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 446
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 446
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 447
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 448
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 453
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 453
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 455
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 455
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 463
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 470
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 471
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 471
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 472
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 473
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 478
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 478
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 480
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 480
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 490
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 501
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 502
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 502
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 503
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 504
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 509
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 509
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 511
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 511
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 525
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 544
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 545
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 545
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 546
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 547
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 554
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 554
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 554
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToInt",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 557
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 558
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 560
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 560
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 562
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 571
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 574
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 585
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 586
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 586
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 590
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 591
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 591
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 595
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "cin.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 601
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 601
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 601
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 606
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 614
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 614
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 618
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 620
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 620
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 622
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 631
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 634
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 645
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 646
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 646
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 650
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 651
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 651
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 655
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 661
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 661
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 666
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 673
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 673
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 676
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 676
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 681
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 687
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 694
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 694
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.minusOne",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 696
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 703
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 703
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 707
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 707
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 710
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 710
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 718
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 728
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 728
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 731
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 731
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 734
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 734
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 742
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 742
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.minusOne",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 744
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 750
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 750
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 753
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 756
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 760
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 770
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToInt",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 773
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 774
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.n",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 777
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 777
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 778
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 784
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 785
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 785
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 786
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 787
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 796
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 796
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 800
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 800
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 804
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits1.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 804
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 806
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 807
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 807
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 810
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 811
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 812
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 813
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 813
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 818
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd1.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 822
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 823
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 827
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 828
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd0.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 832
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd1.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 832
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 833
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 838
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.forall",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 841
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.isAllData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 845
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.n",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 848
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.sumBy",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 851
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 851
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 858
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 859
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 861
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 864
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 865
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 866
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 866
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 871
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 872
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 874
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 877
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 878
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 879
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 879
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 883
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.data",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 884
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 886
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 887
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 893
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 895
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 896
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 898
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 901
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 901
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 902
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 916
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 923
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 930
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.zip",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 931
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.makeSplitOutput",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.iteri",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 934
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 935
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 937
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 939
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 939
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 940
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 946
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 946
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 953
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 953
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 960
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 960
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 974
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 975
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 990
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 992
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 993
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1000
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1001
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1001
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1003
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1007
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1009
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1010
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1020
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1021
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1021
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1029
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1031
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1041
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1042
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1042
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1049
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1050
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1050
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1061
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1063
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1064
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1073
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1074
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1074
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1078
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1079
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1079
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1086
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1088
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1089
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1099
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1105
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1105
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1111
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1113
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1114
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1120
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1126
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1126
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1129
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1131
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1131
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1132
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1134
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1136
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1136
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1140
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1142
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1143
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1150
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1150
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1151
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1153
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1155
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1155
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1159
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1161
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1162
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1167
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1167
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "address.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1172
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1172
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1173
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "dataIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1176
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1176
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1177
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1182
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1185
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1185
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.writeMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1189
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1189
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.address",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1189
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1189
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1189
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1196
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1198
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1199
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1209
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1211
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1212
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1217
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1217
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "address.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1224
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1224
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1225
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "dataIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1232
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1232
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1233
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1243
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.writeMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1250
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1250
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.address",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1250
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1257
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.simStep",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1257
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1257
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1260
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1264
+    },
+    {
+      "from": "FastReduceTT.fastReduceFData",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1264
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 181
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 181
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 184
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 197
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 197
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.bits0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 198
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 198
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 210
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 211
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 211
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 212
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 213
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 218
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 218
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 218
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 218
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 218
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 222
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 222
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 223
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits2.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 223
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 227
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 228
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd1.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 229
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 244
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 245
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 245
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 246
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 247
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 253
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 257
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 257
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 258
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd2.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 258
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 259
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd3.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 259
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 260
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd4.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 260
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 261
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd5.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 261
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 262
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd6.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 262
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 263
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd7.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 263
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 267
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 268
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd1.fdToString",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 269
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 288
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 289
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 289
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 290
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 291
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 296
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 296
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 298
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 298
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 306
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 313
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 314
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 314
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 315
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 316
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 321
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 321
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 323
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 323
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 333
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 344
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 345
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 345
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 346
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 347
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 352
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 352
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 354
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 354
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fdIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 368
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 387
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 388
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 388
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 389
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 390
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 397
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 397
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 397
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertFastDataToInt",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 400
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 401
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 403
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 403
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 405
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 414
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 417
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 428
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 429
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 429
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 433
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 434
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 434
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 438
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "cin.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 444
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 444
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 444
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 449
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 457
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 457
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 461
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 463
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 463
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 465
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.bigIntMask",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 474
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 477
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 488
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 489
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 489
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 493
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 494
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.w",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 494
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 498
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 504
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 504
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.componentType",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 509
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 516
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 516
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 519
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 519
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 524
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 530
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 537
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 537
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.minusOne",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 539
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 546
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 546
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 550
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 550
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 553
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 553
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 561
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 561
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 571
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 571
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 574
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 574
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 577
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 577
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "2.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 585
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "1.0",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 585
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.minusOne",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 587
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 593
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "B.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 593
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 596
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 599
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "A.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 603
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 613
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertFastDataToInt",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 616
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 617
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.n",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 620
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 620
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 621
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 627
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasStateAnalyser.port",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 628
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.a",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 628
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 629
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 630
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 639
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 639
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 643
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits1.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 643
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 647
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits1.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 647
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 649
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 650
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 650
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 653
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertFastDataToBigint",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 654
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits0.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 655
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 656
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 656
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 661
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd1.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 665
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 666
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 670
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 671
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd0.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 675
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd1.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 675
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 676
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 681
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.forall",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 684
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.isAllData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 688
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.n",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 691
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.sumBy",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 694
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 694
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 701
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 702
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 704
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 707
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 708
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertIntToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 709
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 709
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Dat",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 714
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 715
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 717
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 720
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mergeTwoValues",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 721
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "NumberHelpers.convertBigintToFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 722
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.wOut",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 722
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.fold",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 726
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.data",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 727
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.toExp",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 729
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.foldAppends",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 730
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 736
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 738
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 739
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 741
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 744
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 744
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 745
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 759
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getAlgExpWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 766
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 773
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.zip",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 774
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.makeSplitOutput",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 775
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 775
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 775
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.iteri",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 775
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 777
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 778
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 780
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 782
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 782
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "rec.getBits",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 783
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 789
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 789
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 796
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 796
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 803
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "List.iteri2",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 803
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 817
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 818
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 833
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 835
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 836
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 843
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 844
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 844
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 846
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 850
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 852
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 853
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 863
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 864
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 864
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 872
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 874
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 875
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 884
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 885
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 885
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 892
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 893
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 893
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 904
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 906
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 907
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 916
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 917
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 917
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 921
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 922
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "bits.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 922
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 929
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 931
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 932
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 942
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 948
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 948
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 954
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 956
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 957
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "lastOut.toFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 963
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "BiBits.width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 969
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastData.MakeFastData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 969
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 972
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 974
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 974
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 975
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 977
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 979
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 979
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 983
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 985
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 986
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "fd.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 993
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 993
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 994
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.fd",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 996
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 998
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 998
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1002
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1004
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1005
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1010
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1010
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "address.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1015
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1015
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1016
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "dataIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1019
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1019
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1020
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1025
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1028
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1028
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.writeMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.address",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1032
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1039
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1041
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1042
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.inputs",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1052
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.FullName",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1054
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.cId",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1055
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1060
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1060
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "address.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1067
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.AddressWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1068
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "dataIn.Width",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1075
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1075
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "mem.WordWidth",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1076
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.write",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1086
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.writeMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1093
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1093
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.address",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1093
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.getRamStateMemory",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.simStep",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "comp.State",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1100
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "CanvasExtractor.ins",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1103
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduce.readMemoryFData",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1107
+    },
+    {
+      "from": "FastReduceTT.makeSplitOutput",
+      "to": "FastReduceTT.mem",
+      "file": "FastSim/FastReduceTT.fs",
+      "line": 1107
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "List.iter",
+      "file": "FastSim/FastRun.fs",
+      "line": 91
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "FastReduce.fastReduce",
+      "file": "FastSim/FastRun.fs",
+      "line": 92
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "FastExtract.a",
+      "file": "FastSim/FastRun.fs",
+      "line": 92
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "fs.MaxArraySize",
+      "file": "FastSim/FastRun.fs",
+      "line": 92
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "fc.Touched",
+      "file": "FastSim/FastRun.fs",
+      "line": 94
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "FastRun.propagateEval",
+      "file": "FastSim/FastRun.fs",
+      "line": 95
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "List.toArray",
+      "file": "FastSim/FastRun.fs",
+      "line": 99
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "co.fId",
+      "file": "FastSim/FastRun.fs",
+      "line": 100
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "FastRun.fs",
+      "file": "FastSim/FastRun.fs",
+      "line": 105
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "Array.ofList",
+      "file": "FastSim/FastRun.fs",
+      "line": 105
+    },
+    {
+      "from": "FastRun.orderCombinationalComponents",
+      "to": "Array.rev",
+      "file": "FastSim/FastRun.fs",
+      "line": 105
+    },
+    {
+      "from": "NumberHelpers.hexToBin",
+      "to": "NumberHelpers.convert",
+      "file": "NumberHelpers.fs",
+      "line": 58
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.curr",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 35
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "currStack.Contains",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 35
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "visited.Contains",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 35
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "visited.Add",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 44
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "currStack.Add",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 45
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.getCombOuts",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 48
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.currNode",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 48
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "Map.toList",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 49
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "List.collect",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 51
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.exploreChildren",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 52
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.visited",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 52
+    },
+    {
+      "from": "SimulationGraphAnalyser.dfs",
+      "to": "SimulationGraphAnalyser.exploreChildren",
+      "file": "SimulationGraphAnalyser.fs",
+      "line": 52
+    }
+  ],
+  "private_functions": [
+    "NumberHelpers.printWithFill",
+    "SimulationGraphAnalyser.dfs",
+    "SynchronousUtils.dfs",
+    "SynchronousUtils.exploreNestedComponents",
+    "FastRun.stepSimulation",
+    "SynchronousUtils.getCustomCombinatorialOutputs",
+    "GraphMerger.checkDependencyCycle",
+    "GraphMerger.merger",
+    "FastReduce.readMemoryAddrUInt32DataUInt32",
+    "FastRun.propagateInputsFromLastStep",
+    "CanvasStateAnalyser.checkEvery",
+    "FastCreate.reLinkIOLabels",
+    "GraphBuilder.findOutputWidths",
+    "FastRun.orderCombinationalComponentsFData",
+    "GraphBuilder.buildSimulationComponent",
+    "NumberHelpers.compress",
+    "CanvasStateAnalyser.checkConns",
+    "GraphBuilder.getPortNumberOrFail",
+    "SimulationGraphAnalyser.recursivelyCheckCombinatorialCycles",
+    "GraphBuilder.buildSimulationGraph",
+    "CanvasStateAnalyser.checkCounts",
+    "GraphMerger.getComponentDependencies",
+    "CanvasStateAnalyser.checkPortTypesAreConsistent",
+    "NumberHelpers.countBits",
+    "CanvasStateAnalyser.genMaps",
+    "SynchronousUtils.findCombinatorialPaths",
+    "CanvasStateAnalyser.getInErrType",
+    "GraphMerger.buildDependencyMap",
+    "CanvasStateAnalyser.getAllOutputPortIds",
+    "CanvasStateAnalyser.countPortsConnections",
+    "GraphBuilder.getValuesForPorts",
+    "CanvasStateAnalyser.getInPortRmInfo",
+    "CanvasStateAnalyser.getAllInputPortIds",
+    "GraphBuilder.mapInputPortIdToPortNumber",
+    "NumberHelpers.addCommasAndZeros",
+    "SimulationGraphAnalyser.checkCombinatorialCycle",
+    "SimulationGraphAnalyser.calculateConnectionsAffected",
+    "GraphBuilder.buildSourceToTargetPortMap",
+    "FastRun.isValidFData",
+    "CanvasStateAnalyser.checkConnectionsWidths",
+    "NumberHelpers.hexToBin",
+    "FastRun.restartSimulation",
+    "FastRun.printComps",
+    "GraphBuilder.getDefaultState",
+    "FastRun.setInputstoDefault",
+    "FastCreate.createFlattenedSimulation",
+    "FastRun.orderCombinationalComponents",
+    "NumberHelpers.addZerosBignum",
+    "FastExtract.setSimulationInputFData",
+    "CanvasStateAnalyser.checkIOLabels",
+    "FastRun.isValidData",
+    "GraphMerger.getDependencyState",
+    "FastExtract.setSimulationInput",
+    "GraphMerger.buildDependencyGraph",
+    "GraphMerger.checkDependenciesAndBuildMap",
+    "SynchronousUtils.labelToPortNumber",
+    "CanvasStateAnalyser.checkPortConnections",
+    "CanvasStateAnalyser.getOutPortRmInfo",
+    "CanvasStateAnalyser.checkPortsAreConnectedProperly"
+  ]
+}

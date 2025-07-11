@@ -1,0 +1,93 @@
+{
+  "total_modules": 17,
+  "total_functions": 737,
+  "total_calls": 1130,
+  "most_called_functions": [
+    {
+      "function": "CanvasStateAnalyser.components",
+      "calls": 4
+    },
+    {
+      "function": "comp.FullName",
+      "calls": 3
+    },
+    {
+      "function": "CanvasStateAnalyser.s",
+      "calls": 3
+    },
+    {
+      "function": "CanvasStateAnalyser.t",
+      "calls": 3
+    },
+    {
+      "function": "BiBits.width",
+      "calls": 3
+    },
+    {
+      "function": "List.iteri2",
+      "calls": 3
+    },
+    {
+      "function": "mem.AddressWidth",
+      "calls": 3
+    },
+    {
+      "function": "mem.WordWidth",
+      "calls": 3
+    },
+    {
+      "function": "FastReduce.getRamStateMemory",
+      "calls": 3
+    },
+    {
+      "function": "comp.State",
+      "calls": 3
+    }
+  ],
+  "most_calling_functions": [
+    {
+      "function": "FastReduceTT.fastReduceFData",
+      "calls": 92
+    },
+    {
+      "function": "FastReduceTT.makeSplitOutput",
+      "calls": 73
+    },
+    {
+      "function": "FastReduce.fastReduce",
+      "calls": 41
+    },
+    {
+      "function": "SynchronousUtils.couldBeSynchronousComponent",
+      "calls": 1
+    },
+    {
+      "function": "FastReduce.d",
+      "calls": 0
+    },
+    {
+      "function": "comp.BigIntState",
+      "calls": 0
+    },
+    {
+      "function": "comp.InputWidth",
+      "calls": 0
+    },
+    {
+      "function": "comp.FullName",
+      "calls": 0
+    },
+    {
+      "function": "FastReduce.n",
+      "calls": 0
+    },
+    {
+      "function": "FastReduce.bit",
+      "calls": 0
+    }
+  ],
+  "recursive_functions": [
+    "FastReduceTT.makeSplitOutput"
+  ],
+  "isolated_functions": []
+}
