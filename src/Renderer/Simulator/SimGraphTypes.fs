@@ -403,82 +403,6 @@ let foldAppends (expressions: FastAlgExp list) =
         | _, _ -> exp :: acc)
     |> List.rev
 
-/// Converts an Algebraic Expression to a string for pretty printing
-/// This function is now used for debugging purposes, if Katex doesn't work as expected, we can use this function again
-/// by changing the name to expToKatex. -- 13/1/2025
-// let expToString exp =
-//     let rec expToString' (exp: FastAlgExp) =
-//         match exp with
-//         | SingleTerm(_, label, _) -> string label
-//         | DataLiteral { Dat = Word w; Width = _ } -> string w
-//         | DataLiteral { Dat = BigWord w; Width = _ } -> string w
-//         | UnaryExp(NegOp, exp) ->
-//             let expStr = expToString' exp
-//             $"(-{expStr})"
-//         | UnaryExp(NotOp, exp) ->
-//             let expStr = expToString' exp
-//             $"(~{expStr})"
-//         | UnaryExp(BitRangeOp(low, up), exp) ->
-//             let expStr = expToString' exp
-
-//             if low = up then // Replace A[x:x] with A[x]
-//                 $"{expStr}[{up}]"
-//             else if getAlgExpWidth exp = (up - low + 1) then
-//                 // Replace A[w-1:0] with A when A has width w
-//                 expStr
-//             else
-//                 $"{expStr}[{up}:{low}]"
-//         | UnaryExp(CarryOfOp, exp) ->
-//             let expStr = expToString' exp
-//             $"carry({expStr})"
-//         | BinaryExp(exp1, AddOp, exp2) ->
-//             // let expStr1 = expToString' exp1
-//             // let expStr2 = expToString' exp2
-//             // $"({expStr1}+{expStr2})"
-//             $"({arithmeticToString exp})"
-//         | BinaryExp(exp1, SubOp, exp2) ->
-//             // let expStr1 = expToString' exp1
-//             // let expStr2 = expToString' exp2
-//             // $"({expStr1}-{expStr2})"
-//             $"({arithmeticToString exp})"
-//         | BinaryExp(exp1, BitAndOp, exp2) ->
-//             let expStr1 = expToString' exp1
-//             let expStr2 = expToString' exp2
-//             $"({expStr1}&{expStr2})"
-//         | BinaryExp(exp1, BitOrOp, exp2) ->
-//             let expStr1 = expToString' exp1
-//             let expStr2 = expToString' exp2
-//             $"({expStr1}|{expStr2})"
-//         | BinaryExp(exp1, BitXorOp, exp2) ->
-//             let expStr1 = expToString' exp1
-//             let expStr2 = expToString' exp2
-//             $"({expStr1}⊕{expStr2})"
-//         | ComparisonExp(exp, Equals, x) ->
-//             let expStr = expToString' exp
-//             $"({expStr} == {string x})"
-//         | AppendExp exps ->
-//             exps
-//             |> List.map expToString'
-//             |> String.concat "::"
-//             |> (fun s -> $"({s})")
-
-//     and arithmeticToString exp =
-//         exp
-//         |> flattenNestedArithmetic
-//         |> List.mapi (fun i expr ->
-//             match i, expr with
-//             | 0, e -> expToString' e
-//             | _, UnaryExp(NegOp, e) -> $"- {expToString' e}"
-//             | _, e -> $"+ {expToString' e}")
-//         |> String.concat " "
-
-//     let expS = expToString' exp
-//     // Remove the parentheses from the outermost expression
-//     if expS.StartsWith "(" && expS.EndsWith ")" then
-//         expS[1 .. (expS.Length - 2)]
-//     else
-//         expS
-
 let rec expToKatex (exp: FastAlgExp) : string =
     let rec expToKatex' exp =
         match exp with
@@ -811,12 +735,6 @@ let bigIntBitMask pos =
     else
         (1I <<< pos)
 
-let fastBit (n: uint32) =
-#if ASSERTS
-    Helpers.assertThat (n < 2u) (sprintf "Can't convert %d to a single bit FastData" n)
-#endif
-    { Dat = Word n; Width = 1 }
-
 let rec bitsToInt (lst: Bit list) =
     match lst with
     | [] -> 0u
@@ -831,38 +749,7 @@ let rec bitsToBig (lst: Bit list) =
         (if x = Zero then 0I else 1I)
         + ((bitsToBig rest) <<< 1)
 
-/// convert Wiredata to FastData equivalent
-let rec wireToFast (wd: WireData) =
-    let n = wd.Length
-
-    let dat =
-        if n <= 32 then
-            Word(bitsToInt wd)
-        else
-            BigWord(bitsToBig wd)
-
-    { Dat = dat; Width = n }
-
-/// convert FastData to WireData equivalent
-let rec fastToWire (f: FastData) =
-    match f.Dat with
-    | Word x ->
-        [ 0 .. f.Width - 1 ]
-        |> List.map (fun n ->
-            if (x &&& (1u <<< n)) = 0u then
-                Zero
-            else
-                One)
-    | BigWord x ->
-        [ 0 .. f.Width - 1 ]
-        |> List.map (fun n ->
-            if (x &&& bigIntBitMask n) = 0I then
-                Zero
-            else
-                One)
-
 let fastDataZero = { Dat = Word 0u; Width = 1 }
-let fastDataOne = { Dat = Word 1u; Width = 1 }
 
 let rec b2s (b: bigint) =
     let lsw = b &&& ((1I <<< 32) - 1I)

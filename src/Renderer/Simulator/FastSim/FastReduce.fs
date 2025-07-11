@@ -15,20 +15,6 @@ open Helpers
 // ----------Subfunctions used by fastReduce to evaluate a component-----------//
 //------------------------------------------------------------------------------//
 
-let inline assertThat cond msg =
-    if not cond then
-        failwithf "what? assert failed: %s" msg
-
-/// Assert that the FData only contain a single bit, and return such bit.
-let inline extractBit (fd: FastData) (busWidth: int) : uint32 =
-#if ASSERTS
-    assertThat (fd.Width = 1 || fd.Width = 2 || fd.Width = 3)
-    <| sprintf "extractBit called with wireData: %A" fd
-#endif
-    match fd.Dat with
-    | Word n -> n
-    | BigWord _ -> failwithf $"Can't extract %d{busWidth} bit from BigWord data {fd.Dat} of width {fd.Width}"
-
 let inline extractBitFData (fd_: FData) (busWidth: int) : uint32 =
     match fd_ with
     | Alg _ -> failwithf "Can't extract data from Algebra"
@@ -41,11 +27,6 @@ let inline extractBitFData (fd_: FData) (busWidth: int) : uint32 =
         | Word n -> n
         | BigWord _ -> failwithf $"Can't extract %d{busWidth} bit from BigWord data {fd.Dat} of width {fd.Width}"
 
-let inline packBit (bit: uint32) : FastData =
-    if bit = 0u then
-        { Dat = Word 0u; Width = 1 }
-    else
-        { Dat = Word 1u; Width = 1 }
 
 let inline packBitFData (bit: uint32) : FData =
     if bit = 0u then
@@ -117,17 +98,9 @@ let getRamStateMemory numSteps step (state: StepArray<SimulationComponentState> 
         | _ -> failwithf "What? getRamStateMemory called with invalid state"
     | _ -> failwithf "what? getRamStateMemory called with an invalid state: %A" state
 
-let getRomStateMemory comp =
-    match comp.FType with
-    | ROM memory
-    | AsyncROM memory -> memory
-    | _ -> failwithf "What? getRomStateMemory called with invalid state"
-
 
 
 let inline bitNot bit = bit ^^^ 1u
-
-let inline bitNotB width bit = (1I <<< width) - 1I - bit
 
 let inline bitAnd bit0 bit1 = bit0 &&& bit1
 
@@ -164,12 +137,6 @@ let inline  algAnd exp1 exp2 = BinaryExp(exp1, BitAndOp, exp2)
 let inline  algOr exp1 exp2 = BinaryExp(exp1, BitOrOp, exp2)
 
 let inline  algXor exp1 exp2 = BinaryExp(exp1, BitXorOp, exp2)
-
-let inline  algNand exp1 exp2 = algAnd exp1 exp2 |> algNot
-
-let inline  algNor exp1 exp2 = algOr exp1 exp2 |> algNot
-
-let inline  algXnor exp1 exp2 = algXor exp1 exp2 |> algNot
 
 let inline  algGate gateType =
     match gateType with

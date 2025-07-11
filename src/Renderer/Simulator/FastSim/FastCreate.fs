@@ -14,10 +14,6 @@ open Helpers
 
 //-----------------------------Fast Simulation Creation-------------------------//
 
-let inline assertThat cond msg =
-    if not cond then
-        failwithf "what? assert failed: %s" msg
-
 let emptyGather =
     { Labels = Map.empty
       Simulation = Map.empty
@@ -119,11 +115,6 @@ let getPortNumbers (sc: SimulationComponent) =
         | Input _ -> failwithf "Legacy Input component types should never occur"
 
     ins, outs
-
-let compType t =
-    match t with
-    | Custom c -> c.Name
-    | _ -> t.ToString()
 
 let findBigIntState (fc: FastComponent) =
     match fc.FType with

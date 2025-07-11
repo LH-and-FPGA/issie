@@ -29,12 +29,6 @@ let getSheet (ldcs: LoadedComponent list) (openSheet: string) =
     | None -> failwithf $"getSheet failed to look up '{openSheet}' in {ldcs |> List.map (fun ldc -> ldc.Name)}"
     | Some name -> name
 
-/// look up a sheet in a set of loaded components, return [] or a list of the matching LoadedComponent
-let getLdcList (ldcs: LoadedComponent list) (openSheet: string) =
-    match List.tryFind (fun ldc -> cap ldc.Name = cap openSheet) ldcs with
-    | None -> failwithf $"getSheet failed to look up '{openSheet}' in {ldcs |> List.map (fun ldc -> ldc.Name)}"
-    | Some name -> name
-
 let getDirectDependencies (cs: CanvasState) =
     fst cs
     |> List.collect (fun comp ->
@@ -79,32 +73,6 @@ let getUpdatedLoadedComponentState diagramName canvasState projLdcs =
 
     ldcs
 
-/// gets the status of the simulation given current canvasState and project
-let getCurrentSimulationState
-    (canvState: CanvasState)
-    (project: Project option)
-    (fs: FastSimulation)
-    : SimulationRunStatus
-    =
-    match project with
-    | None -> SimNoProject
-    | _ when fs.SimulatedTopSheet = "" -> SimEmpty
-    | Some p ->
-        let simIsUpToDate =
-            fs.SimulatedCanvasState
-            |> List.forall (fun ldc ->
-                match
-                    p.OpenFileName = ldc.Name,
-                    List.tryFind (fun (ldc': LoadedComponent) -> ldc'.Name = ldc.Name) p.LoadedComponents
-                with
-                | _, None -> false
-                | false, Some ldc' -> CanvasExtractor.loadedComponentIsEqual ldc ldc'
-                | true, Some _ -> CanvasExtractor.stateIsEqual ldc.CanvasState canvState)
-
-        match simIsUpToDate, p.OpenFileName = fs.SimulatedTopSheet with
-        | false, _ -> SimOutOfDate
-        | true, true -> SimValidSameSheet
-        | true, false -> SimValidDifferentSheet
 
 /// Helper used convert port into SheetPort for use by wave simulator determining connectivity
 /// within a design sheet.
@@ -303,11 +271,6 @@ type SimCache = {
     /// quick access link to Fast Simulation, or placeholder if one does not exist
     FastSim: FastSimulation
     }
-
-
-        
-
-
 
 let simCacheInit () = {
     Name = ""; 

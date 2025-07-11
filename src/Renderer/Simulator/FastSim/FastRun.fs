@@ -24,11 +24,7 @@ module Constants =
     /// used to prevent time instrument overhead in simulation - too large and simulations prevent responsiveness
     let numberOfStepsBeforeTimeCheck = 5
 
-/// Invalid data is used as default to determine which inputs have been given data when ordering components
-let private isValidFData (fd: FData) =
-    match fd with
-    | Data d -> d <> emptyFastData
-    | _ -> false
+/// Invalid data is used as default to determine which inputs have been given data when ordering components]
 
 let private isValidData (fd: IOArray) = fd.Width <> 0
 

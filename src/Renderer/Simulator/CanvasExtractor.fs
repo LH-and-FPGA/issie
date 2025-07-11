@@ -5,7 +5,6 @@ open Fable.Core
 
 /// access javascript reference equality
 [<Emit("($1 === $0)")>]
-let referenceEquality (a1: obj) (a2: obj) : bool = jsNative
 
 let sortQBy (byFun: 'a -> 'b) (ids: 'a list) =
     let mutable isSorted = true
@@ -22,36 +21,6 @@ let logConnId (id: ConnectionId) =
     |> (fun (ConnectionId str) -> str)
     |> (fun str -> str[0..2])
 
-/// Transform the CanvasState into an f# data structure, with layout data removed (for checking electrically significant changes).
-/// Components and connections are sorted to make them order-invariant - selecting components alters order.
-let extractReducedState (state: CanvasState) : ReducedCanvasState =
-    let (components: Component list), (connections: Connection list) = state
-
-    let comps =
-        components
-        |> List.map (fun comp ->
-            if
-                comp.SymbolInfo = None
-                && comp.H = 0.
-                && comp.W = 0.
-                && comp.X = 0.
-                && comp.Y = 0.
-            then
-                comp
-            else
-                { comp with H = 0.; W = 0.; X = 0.; Y = 0.; SymbolInfo = None })
-        |> sortQBy (fun comp -> comp.Id)
-
-    let conns =
-        connections
-        |> List.map (fun conn ->
-            if conn.Vertices = [] then
-                conn
-            else
-                { conn with Vertices = [] })
-        |> sortQBy (fun conn -> conn.Id)
-
-    ReducedCanvasState(comps, conns)
 
 let inline connsAreEqual (conn1: Connection) (conn2: Connection) =
     let portsEqual (p1: Port) (p2: Port) =
@@ -126,18 +95,6 @@ let verticesAreSame (fixedOffset:XYPos) tolerance (conns1: (float * float * bool
 /// allows easy access to specific connections - so it can be highlighted in GUI
 let mutable debugChangedConnections: ConnectionId list = []
 
-let printConnErrors (connFixedOffset: XYPos)=
-    List.mapi (fun i (c1,c2) ->
-        let lengthDiff = c1.Vertices.Length - c2.Vertices.Length
-        if c1.Id <> c2.Id then
-            printfn "*** Connection Ids don't match"
-        if lengthDiff <> 0 then
-            printf "%s" $"Conn {i} {logConnId (ConnectionId c1.Id)}: Length diff: {lengthDiff}"
-        else
-            printf "%s" $"Conn {i} {logConnId (ConnectionId c1.Id)}: \
-                Vertices don't match: fixedoffset = %.1f{connFixedOffset.X},%.1f{connFixedOffset.Y}"
-            printfn "Vertex deltas: %A" ((c1.Vertices,c2.Vertices) ||> List.map2 (fun (x1,y1,_) (x2,y2,_) -> (x1-x2),(y1-y2)))
-        c1,c2)
 
 /// Are two lists of connections identical
 let compareConns tolerance conns1 conns2 =

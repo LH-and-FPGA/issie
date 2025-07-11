@@ -106,20 +106,6 @@ let getPortName (comp:Component) (port: Port) =
         | Some name -> name
         | None -> ""
 
-let private getAllInputPortIds (components: Component list) : (InputPortId * ComponentId) list =
-    components
-    |> List.collect (fun comp ->
-        comp.InputPorts
-        |> List.map (fun port -> InputPortId port.Id, ComponentId comp.Id))
-
-/// Return all the Ids of all ouput ports across all components.
-/// Return also the ComponentId which may be used in error messages.
-let private getAllOutputPortIds (components: Component list) : (OutputPortId * ComponentId) list =
-    components
-    |> List.collect (fun comp ->
-        comp.OutputPorts
-        |> List.map (fun port -> OutputPortId port.Id, ComponentId comp.Id))
-
 /// maps for use in various places
 let private genMaps ((comps, conns): CanvasState) =
 

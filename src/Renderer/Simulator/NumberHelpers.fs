@@ -181,11 +181,6 @@ let private addCommasAndZeros (width: int) (printedChars: string) =
     printedChars[0..0] + commaSeparatedDigits
 
 
-let big8 = 256I
-let big16 = 65536I
-let big32 = 1I <<< 32
-let big64 = 1I <<< 64
-
 /// Add commas to a string every 4 digits, and leading zeros to fill to given width in bits (not digits).
 /// If width = 0 do not add leading zeros.
 /// The string must be prefixed x or b to indicate hex or binary digits.
@@ -434,12 +429,6 @@ let convertFastDataToInt (d: FastData) =
     | Word n -> n
     | BigWord _ -> failwithf $"Can't convert {d.Dat} to integer"
 
-/// Lossy conversion of bigint to int32 without exceptions
-/// TODO: change this - and all dependencies with 32 bit int - to bigint?
-let convertFastDataToInt32 (d: FastData) =
-    match d.Dat with
-    | Word n -> int32 n
-    | BigWord n -> int32 (n &&& bigint 0xffffffff)
 
 let convertBigintToInt32 (b: bigint) = int32 (b &&& bigint 0xffffffff)
 

@@ -124,10 +124,6 @@ type TruthTable =
 let rowContainsDC (row: TruthTableRow) =
     row |> List.exists (fun cell -> cell.IsDC)
 
-/// Returns true if a row contains algebra
-let rowContainsAlgebra (row: TruthTableRow) =
-    row |> List.exists (fun cell -> cell.IsAlgebra)
-
 //-------------------------------------------------------------------------------------//
 //-----------------------------Constraint Types----------------------------------------//
 //-------------------------------------------------------------------------------------//
@@ -170,12 +166,6 @@ let makeInequalityConstraint lower io upper =
 
     { LowerBound = lower; IO = io; UpperBound = upper; Range = range }
 
-let orderConstraints set =
-    let ordered =
-        set.Inequalities
-        |> List.sortByDescending (fun c -> c.Range)
-    { set with Inequalities = ordered }
-
 // Data structure containing information about an input used when calculating Truth Table LHS.
 // RowCount for an input refers to the number of unique values it contributes to the table
 type TableInput =
@@ -192,24 +182,3 @@ type TableInput =
       AllowedRowCount: int
       // Constraints on the input
       Constraints: ConstraintSet }
-
-/// Create a TableInput data structure from a SimulationIO using application state
-let initTableInput (simIO: SimulationIO) (allConstraints: ConstraintSet) (algebraIOs: SimulationIO list) =
-    let (_, _, w) = simIO
-
-    let specificEqualities =
-        allConstraints.Equalities
-        |> List.filter (fun con -> con.IO = SimIO simIO)
-
-    let specificInequalities =
-        allConstraints.Inequalities
-        |> List.filter (fun con -> con.IO = SimIO simIO)
-
-    let isAlg = List.contains simIO algebraIOs
-
-    { IO = simIO
-      IsAlgebra = isAlg
-      MaxRowCount = int (2.0 ** w)
-      ConstrainedRowCount = 0
-      AllowedRowCount = 0
-      Constraints = { Equalities = specificEqualities; Inequalities = specificInequalities } }

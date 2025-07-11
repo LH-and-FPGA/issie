@@ -338,33 +338,6 @@ type SimulationRunStatus =
 //-------------------Helper functions for simulation types-----------------------------//
 //-------------------------------------------------------------------------------------//
 
-let sprintSimComponent (sComp: SimulationComponent) =
-    sprintf "'%A': %20s" sComp.Label (sComp.Type.ToString() |> Helpers.sprintInitial 20)
-
-let shortPSComp (comp: SimulationComponent) =
-    let lab =
-        match comp.Label with
-        | ComponentLabel lab' -> lab'
-
-    match comp.Type with
-    | Custom sc -> sprintf "%s:Custom.(%s.%A->%A)" lab sc.Name sc.InputLabels sc.OutputLabels
-    | _ -> sprintf "%s:%A" lab comp.Type
-
-let printSimGraph (sg: SimulationGraph) =
-    printfn
-        "%s"
-        (String.concat
-            "\n"
-            (sg
-             |> Map.toList
-             |> List.map (fun (ComponentId id, comp) -> sprintSimComponent comp + id)))
-
-let tryGetCompLabel (compId: ComponentId) (sg: SimulationGraph) =
-    Map.tryPick (fun k v -> if k = compId then Some v else None) sg
-    |> Option.map (fun comp -> comp.Label)
-    |> Option.map (fun (ComponentLabel s) -> s)
-    |> Option.defaultValue "'Not in SimGraph'"
-
 let extractLabel (label: ComponentLabel) =
     let (ComponentLabel name) = label
     name
@@ -380,9 +353,3 @@ let extractLabel (label: ComponentLabel) =
 // makes a netgroup which must be driven by just one NLSource (connected to one of the IOLabel inputs).
 // every net is therefore part of one netgroup which is either a single net, or a group of nets associated
 // with a set of IOLabel connectors having a given common label.
-
-let mapKeys (map: Map<'a, 'b>) = Map.keysA map
-let mapValues (map: Map<'a, 'b>) = Map.valuesA map
-let mapItems (map: Map<'a, 'b>) = Map.toArray map
-
-
