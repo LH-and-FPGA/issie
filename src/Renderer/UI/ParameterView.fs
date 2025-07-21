@@ -691,7 +691,8 @@ let getParamsSlot (currentSheet: CommonTypes.LoadedComponent) =
 let modifyInfoSheet (project: CommonTypes.Project) (choise: UpdateInfoSheetChoise) dispatch=
     
     let currentSheet = project.LoadedComponents
-                                   |> List.find (fun lc -> lc.Name = project.OpenFileName)
+                                   |> List.tryFind (fun lc -> lc.Name = project.OpenFileName)
+                                   |> Option.defaultWith (fun () -> failwithf "Sheet '%s' not found in loaded components" project.OpenFileName)
     let updatedSheet = {currentSheet with LCParameterSlots = 
                                                         match choise with
                                                             | DefaultParams (paramName, value, delete) -> updateInfoSheetDefaultParams currentSheet.LCParameterSlots paramName value delete
@@ -762,7 +763,8 @@ let editParameterBox model parameterName dispatch   =
     | Some project ->
         // Prepare dialog popup.
         let currentSheet = project.LoadedComponents
-                                   |> List.find (fun lc -> lc.Name = project.OpenFileName)
+                                   |> List.tryFind (fun lc -> lc.Name = project.OpenFileName)
+                                   |> Option.defaultWith (fun () -> failwithf "Sheet '%s' not found in loaded components" project.OpenFileName)
         let title = "Edit parameter value"
         let currentValue = getDefaultParams currentSheet |> Map.find (ParamName parameterName)
         let intPrompt = 
@@ -925,7 +927,8 @@ let editParameterBindingPopup model parameterName currValue comp (custom: Custom
     | Some project ->
         // Prepare dialog popup.
         let currentSheet = project.LoadedComponents
-                                   |> List.find (fun lc -> lc.Name = custom.Name)
+                                   |> List.tryFind (fun lc -> lc.Name = custom.Name)
+                                   |> Option.defaultWith (fun () -> failwithf "Custom component '%s' not found in loaded components" custom.Name)
         let title = "Edit parameter value"
         let intPrompt = 
             fun _ ->
@@ -1267,7 +1270,9 @@ let viewParameters (model: ModelType.Model) dispatch =
         match model.CurrentProj with
         |Some proj ->
             let sheetName = proj.OpenFileName
-            let sheetLdc = proj.LoadedComponents |> List.find (fun ldc -> ldc.Name = sheetName)
+            let sheetLdc = proj.LoadedComponents 
+                           |> List.tryFind (fun ldc -> ldc.Name = sheetName)
+                           |> Option.defaultWith (fun () -> failwithf "Sheet '%s' not found in loaded components" sheetName)
             div [] [
             makeParamsField model sheetLdc dispatch
             br []

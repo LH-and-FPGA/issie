@@ -290,22 +290,18 @@ let loadedComponentIsSameAsProject (canvasState: CanvasState) (ldc: LoadedCompon
 let addStateToLoadedComponents openFileName canvasState loadedComponents =
     let ins, outs = parseDiagramSignature canvasState
     
-    // Find existing loaded component to preserve its parameter slots
-    let existingLdc = loadedComponents |> List.tryFind (fun ldc -> ldc.Name = openFileName)
+    // An ldc that is being edited must previously have been read
+    let existingLdc = 
+        loadedComponents 
+        |> List.find (fun ldc -> ldc.Name = openFileName)
 
     let ldc: LoadedComponent =
-        { Name = openFileName
-          LoadedComponentIsOutOfDate = false
-          InputLabels = ins
-          OutputLabels = outs
-          CanvasState = canvasState
-          Form = existingLdc |> Option.bind (fun e -> e.Form)
-          Description = existingLdc |> Option.bind (fun e -> e.Description)
-          WaveInfo = existingLdc |> Option.bind (fun e -> e.WaveInfo)
-          FilePath = existingLdc |> Option.map (fun e -> e.FilePath) |> Option.defaultValue ""
-          TimeStamp = System.DateTime.Now
-          LCParameterSlots = existingLdc |> Option.bind (fun e -> e.LCParameterSlots) // Preserve parameter slots
-         }
+        { existingLdc with
+            InputLabels = ins
+            OutputLabels = outs
+            CanvasState = canvasState
+            TimeStamp = System.DateTime.Now
+            LoadedComponentIsOutOfDate = false }
 
     loadedComponents
     |> List.filter (fun ldc -> ldc.Name <> openFileName)

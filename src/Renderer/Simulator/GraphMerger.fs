@@ -224,43 +224,6 @@ let private checkDependenciesAndBuildMap
 // Merge dependencies //
 //====================//
 
-
-
-
-/// Recursively merge the simulationGraph with its dependencies (a dependecy can
-/// have its own dependencies).
-/// This function assumes there are no circular dependencies, otherwise it will
-/// never terminate.
-let rec private merger (currGraph: SimulationGraph) (dependencyMap: DependencyMap) : SimulationGraph =
-    // For each custom component, replace the Reducer with one that:
-    // - when receiving an (InputPortNumber * Bit) entry (i.e. a new input),
-    //   maps the InputPortNumber to the its label.
-    // - find the Input node in the dependency simulationGraph with that label.
-    // - feed the bit to that Input node.
-    // - extracts the outputs.
-    // - map the output labels to OutputPortNumbers, and this is the output of
-    //   the reducer function.
-    //
-    // A dependency may have dependencies itself, so recursively call the merger
-    // as well.
-    let currGraphCopy = currGraph
-
-    (currGraph, currGraphCopy)
-    ||> Map.fold (fun currGraph compId comp ->
-        match comp.Type with
-        | Custom custom ->
-            let dependencyGraph =
-                match dependencyMap.TryFind custom.Name with
-                | None -> failwithf "what? Could not find dependency %s in dependencyMap" custom.Name
-                | Some dependencyGraph -> dependencyGraph
-
-            let dependencyGraph = merger dependencyGraph dependencyMap
-
-            let newComp = { comp with CustomSimulationGraph = Some dependencyGraph }
-
-            currGraph.Add(compId, newComp)
-        | _ -> currGraph // Ignore non-custom components.
-    )
 /// Recursively update the SimulationGraph replacing integers with the correct parameter values.
 /// Parameter names, and slots using parameters, can be picked up from loadedDependencies
 /// Parameters can be resolved by looking at the parameter bindings of the custom components.
@@ -379,6 +342,53 @@ let rec resolveParametersInSimulationGraph
             | Error e, _ | _, Error e -> Error e
         ) (Ok Map.empty)
 
+/// Recursively merge the simulationGraph with its dependencies (a dependecy can
+/// have its own dependencies).
+/// This function assumes there are no circular dependencies, otherwise it will
+/// never terminate.
+let rec private merger 
+    (state: CanvasState) 
+    (loadedDependencies: LoadedComponent list) 
+    (currGraph: SimulationGraph) 
+    (dependencyMap: DependencyMap) 
+    : SimulationGraph =
+    // For each custom component, replace the Reducer with one that:
+    // - when receiving an (InputPortNumber * Bit) entry (i.e. a new input),
+    //   maps the InputPortNumber to the its label.
+    // - find the Input node in the dependency simulationGraph with that label.
+    // - feed the bit to that Input node.
+    // - extracts the outputs.
+    // - map the output labels to OutputPortNumbers, and this is the output of
+    //   the reducer function.
+    //
+    // A dependency may have dependencies itself, so recursively call the merger
+    // as well.
+    let currGraphCopy = currGraph
+
+    (currGraph, currGraphCopy)
+    ||> Map.fold (fun currGraph compId comp ->
+        match comp.Type with
+        | Custom custom ->
+            let dependencyGraph =
+                match dependencyMap.TryFind custom.Name with
+                | None -> failwithf "what? Could not find dependency %s in dependencyMap" custom.Name
+                | Some dependencyGraph -> dependencyGraph
+
+            // Apply parameter bindings to the dependency graph before merging
+            let resolvedDependencyGraph =
+                let bindings = custom.ParameterBindings |> Option.defaultValue Map.empty
+                match resolveParametersInSimulationGraph bindings custom.Name state loadedDependencies dependencyGraph with
+                | Ok graph -> graph
+                | Error _ -> dependencyGraph // Fall back to unresolved graph on error
+
+            let mergedGraph = merger state loadedDependencies resolvedDependencyGraph dependencyMap
+
+            let newComp = { comp with CustomSimulationGraph = Some mergedGraph }
+
+            currGraph.Add(compId, newComp)
+        | _ -> currGraph // Ignore non-custom components.
+    )
+
 /// Try to resolve all the dependencies in a graph, and replace the reducer
 /// of the custom components with a simulationgraph.
 /// Return an error if there are problems with the dependencies.
@@ -398,5 +408,5 @@ let mergeDependencies
         resolveParametersInSimulationGraph Map.empty currDiagramName state loadedDependencies graph
         |> Result.bind (fun resolvedGraph ->
             // Then recursively replace the dependencies
-            Ok <| merger resolvedGraph dependencyMap
+            Ok <| merger state loadedDependencies resolvedGraph dependencyMap
         )
