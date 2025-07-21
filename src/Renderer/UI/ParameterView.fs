@@ -101,6 +101,8 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                 | Input1 (busWidth, _) -> busWidth
                 | Output busWidth -> busWidth
                 | _ -> failwithf $"Invalid component {comp.Type} for IO"
+            | CustomCompParam _ ->
+                failwithf "CustomCompParam not yet implemented"
         )
         (fun value comp->
                 let newType = 
@@ -141,6 +143,8 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                         | Input1 (_, defaultValue) -> Input1 (value, defaultValue)
                         | Output _ -> Output value
                         | _ -> failwithf $"Invalid component {comp.Type} for IO"
+                    | CustomCompParam _ ->
+                        failwithf "CustomCompParam not yet implemented"
                 { comp with Type = newType}
 )
 
@@ -434,6 +438,8 @@ let updateComponent dispatch model slot value =
         match comp.Type with
         | GateN (gateType, _) -> model.Sheet.ChangeGate sheetDispatch compId gateType value
         | _ -> failwithf $"Gate cannot have type {comp.Type}"
+    | CustomCompParam _ ->
+        failwithf "CustomCompParam not yet implemented"
 
     // Update most recent bus width
     match slot.CompSlot, comp.Type with
@@ -947,25 +953,20 @@ let editParameterBindingPopup model parameterName currValue comp (custom: Custom
                 let labelToEval = 
                     match currentSheet.LCParameterSlots with
                     | Some sheetInfo ->
-                        printf $"paramslots = {sheetInfo.ParamSlots}"
                         sheetInfo.ParamSlots
                         |> Map.toSeq // Convert map to sequence of (ParamSlot, ConstrainedExpr<int>) pairs
                         |> Seq.choose (fun (paramSlot, constrainedExpr) -> 
                             match paramSlot.CompSlot with
                             | IO label -> 
-                                printf $"label = {label}"
                                 let evaluatedValue = 
                                     match evaluateParamExpression newBindings constrainedExpr.Expression with
                                     | Ok expr -> expr
                                     | Error _ -> 0
-                                printf $"evaluatedvalue = {evaluatedValue}"
                                 Some (label, evaluatedValue)
                             | _ -> None 
                         )
                         |> Map.ofSeq // Convert to map
                     | None -> Map.empty
-
-                printf $"labeltoeval = {labelToEval}"
 
                 let newestComponent = updateCustomComponent labelToEval newBindings comp
                 let updateMsg: SymbolT.Msg = SymbolT.ChangeCustom (ComponentId comp.Id, comp, newestComponent.Type)
@@ -973,7 +974,6 @@ let editParameterBindingPopup model parameterName currValue comp (custom: Custom
                 let updateModelSymbol (newMod: SymbolT.Model) (model: Model) = {model with Sheet.Wire.Symbol = newMod}
                 updateModelSymbol newModel |> UpdateModel |> dispatch
 
-                printf $"{comp}"
                 let dispatchnew (msg: DrawModelType.SheetT.Msg) : unit = dispatch (Sheet msg)
                 model.Sheet.DoBusWidthInference dispatchnew
                 dispatch <| ClosePopup
@@ -991,7 +991,6 @@ let editParameterBindingPopup model parameterName currValue comp (custom: Custom
                 let exprSpecs = 
                     match currentSheet.LCParameterSlots with
                     | Some sheetInfo ->
-                        printf $"paramslots = {sheetInfo.ParamSlots}"
                         sheetInfo.ParamSlots
                         |> Map.toList
                         |> List.map snd
@@ -1100,6 +1099,7 @@ let private makeSlotsField (model: ModelType.Model) (comp:LoadedComponent) dispa
             | Buswidth -> "Buswidth"
             | NGateInputs -> "Num inputs"
             | IO label -> $"Input/output {label}"
+            | CustomCompParam name -> $"Parameter {name}"
         
         let name = if Map.containsKey (ComponentId slot.CompId) model.Sheet.Wire.Symbol.Symbols then
                         string model.Sheet.Wire.Symbol.Symbols[ComponentId slot.CompId].Component.Label
@@ -1153,6 +1153,108 @@ let private makeSlotsField (model: ModelType.Model) (comp:LoadedComponent) dispa
                 p [] [str "This sheet does not contain any parameterised." ]    
                 ]
         |Some sheetParamsSlots -> slotView sheetParamsSlots
+
+/// Evaluate parameter expression using parameter bindings - exposed for external use
+let evaluateParameterExpression = evaluateParamExpression
+
+/// Helper function for simulation: resolve parameter expressions for a component
+/// Returns the component type with resolved parameter values
+/// Apply parameter value to component type based on slot type
+let applyParameterToComponentType (compType: ComponentType) (slot: CompSlotName) (value: int) : ComponentType =
+    match slot with
+    | Buswidth ->
+        match compType with
+        | Viewer _ -> Viewer value
+        | BusCompare1 (_, compareValue, dialogText) -> BusCompare1 (value, compareValue, dialogText)
+        | BusSelection (_, outputLSBit) -> BusSelection (value, outputLSBit)
+        | Constant1 (_, constValue, dialogText) -> Constant1 (value, constValue, dialogText)
+        | NbitsAdder _ -> NbitsAdder value
+        | NbitsAdderNoCin _ -> NbitsAdderNoCin value
+        | NbitsAdderNoCout _ -> NbitsAdderNoCout value
+        | NbitsAdderNoCinCout _ -> NbitsAdderNoCinCout value
+        | NbitsXor (_, arithmeticOp) -> NbitsXor (value, arithmeticOp)
+        | NbitsAnd _ -> NbitsAnd value
+        | NbitsNot _ -> NbitsNot value
+        | NbitsOr _ -> NbitsOr value
+        | NbitSpreader _ -> NbitSpreader value
+        | SplitWire _ -> SplitWire value
+        | Register _ -> Register value
+        | RegisterE _ -> RegisterE value
+        | Counter _ -> Counter value
+        | CounterNoLoad _ -> CounterNoLoad value
+        | CounterNoEnable _ -> CounterNoEnable value
+        | CounterNoEnableLoad _ -> CounterNoEnableLoad value
+        | Shift (_, shifterWidth, shiftType) -> Shift (value, shifterWidth, shiftType)
+        | BusCompare (_, compareValue) -> BusCompare (value, compareValue)
+        | Input _ -> Input value
+        | Input1 (_, defaultValue) -> Input1 (value, defaultValue)
+        | Output _ -> Output value
+        | Constant (_, constValue) -> Constant (value, constValue)
+        // Convert single-bit gates to N-bit gates when bit width > 1
+        | GateN (And, _) when value > 1 -> NbitsAnd value
+        | GateN (Or, _) when value > 1 -> NbitsOr value
+        | GateN (Xor, _) when value > 1 -> NbitsXor (value, None)
+        | Not when value > 1 -> NbitsNot value
+        | _ -> compType
+    | NGateInputs ->
+        match compType with
+        | GateN (gateType, _) -> GateN (gateType, value)
+        | _ -> compType
+    | IO _ ->
+        match compType with
+        | Input1 (_, defaultValue) -> Input1 (value, defaultValue)
+        | Output _ -> Output value
+        | _ -> compType
+    | _ -> compType // Other slot types not handled in simulation
+
+let resolveParametersForComponent 
+    (paramBindings: ParamBindings) 
+    (paramSlots: Map<ParamSlot, ConstrainedExpr>) 
+    (comp: Component) 
+    : Result<Component, string> =
+    
+    let compIdStr = comp.Id
+    let relevantSlots = 
+        paramSlots 
+        |> Map.filter (fun slot _ -> slot.CompId = compIdStr)
+
+    if Map.isEmpty relevantSlots then
+        Ok comp
+    else
+        relevantSlots
+        |> Map.toList
+        |> List.fold (fun accResult (slot, constrainedExpr) ->
+            match accResult with
+            | Error _ -> accResult // Propagate error
+            | Ok compSoFar ->
+                match evaluateParamExpression paramBindings constrainedExpr.Expression with
+                | Ok evaluatedValue -> 
+                    let newType = applyParameterToComponentType compSoFar.Type slot.CompSlot evaluatedValue
+                    Ok { compSoFar with Type = newType }
+                | Error err -> 
+                    Error err
+        ) (Ok comp)
+
+/// Update LoadedComponent port labels after parameter resolution
+let updateLoadedComponentPorts (loadedComponent: LoadedComponent) : LoadedComponent =
+    match loadedComponent.LCParameterSlots with
+    | Some paramSlots when not (Map.isEmpty paramSlots.ParamSlots) ->
+        // Apply parameter resolution to get updated port labels
+        let (comps, conns) = loadedComponent.CanvasState
+        let resolvedComps = 
+            comps |> List.map (fun comp ->
+                match resolveParametersForComponent paramSlots.DefaultBindings paramSlots.ParamSlots comp with
+                | Ok resolvedComp -> resolvedComp
+                | Error _ -> comp // Keep original on error
+            )
+        let resolvedCanvas = (resolvedComps, conns)
+        let newInputLabels = CanvasExtractor.getOrderedCompLabels (Input1 (0, None)) resolvedCanvas
+        let newOutputLabels = CanvasExtractor.getOrderedCompLabels (Output 0) resolvedCanvas
+        
+        { loadedComponent with 
+            InputLabels = newInputLabels
+            OutputLabels = newOutputLabels }
+    | _ -> loadedComponent
 
 /// UI interface for viewing the parameter expressions of a component
 let viewParameters (model: ModelType.Model) dispatch =

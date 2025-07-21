@@ -289,6 +289,9 @@ let loadedComponentIsSameAsProject (canvasState: CanvasState) (ldc: LoadedCompon
 /// add given name,state to loadedcomponent list as a loaded component (overwriting existing if needed)
 let addStateToLoadedComponents openFileName canvasState loadedComponents =
     let ins, outs = parseDiagramSignature canvasState
+    
+    // Find existing loaded component to preserve its parameter slots
+    let existingLdc = loadedComponents |> List.tryFind (fun ldc -> ldc.Name = openFileName)
 
     let ldc: LoadedComponent =
         { Name = openFileName
@@ -296,12 +299,12 @@ let addStateToLoadedComponents openFileName canvasState loadedComponents =
           InputLabels = ins
           OutputLabels = outs
           CanvasState = canvasState
-          Form = None
-          Description = None
-          WaveInfo = None
-          FilePath = ""
+          Form = existingLdc |> Option.bind (fun e -> e.Form)
+          Description = existingLdc |> Option.bind (fun e -> e.Description)
+          WaveInfo = existingLdc |> Option.bind (fun e -> e.WaveInfo)
+          FilePath = existingLdc |> Option.map (fun e -> e.FilePath) |> Option.defaultValue ""
           TimeStamp = System.DateTime.Now
-          LCParameterSlots = None // TODO:HLP25 check if parameterslots need to be preserved from previous LDC
+          LCParameterSlots = existingLdc |> Option.bind (fun e -> e.LCParameterSlots) // Preserve parameter slots
          }
 
     loadedComponents
