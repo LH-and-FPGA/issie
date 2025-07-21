@@ -372,11 +372,8 @@ let rec private createFlattenedSimulation (ap: ComponentId list) (graph: Simulat
                 ct.OutputLabels
                 |> List.mapi (fun i (lab, labOutWidth) ->
                     let out =
-                        outputs
-                        |> List.tryFind (fun ((ComponentLabel lab', _), _) -> lab' = lab)
-                        |> Option.map snd
-                        |> Option.defaultWith (fun () -> 
-                            failwithf "Output port '%s' not found in custom component '%s'" lab ct.Name)
+                        List.find (fun (k, v) -> k = (ComponentLabel lab, labOutWidth)) outputs
+                        |> snd
 
                     (out, ap'), ((cid, ap), OutputPortNumber i))
 
@@ -387,11 +384,8 @@ let rec private createFlattenedSimulation (ap: ComponentId list) (graph: Simulat
                 ct.InputLabels
                 |> List.mapi (fun i (lab, labOutWidth) ->
                     let inp =
-                        inputs
-                        |> List.tryFind (fun ((ComponentLabel lab', _), _) -> lab' = lab)
-                        |> Option.map snd
-                        |> Option.defaultWith (fun () -> 
-                            failwithf "Input port '%s' not found in custom component '%s'" lab ct.Name)
+                        List.find (fun (k, v) -> k = (ComponentLabel lab, labOutWidth)) inputs
+                        |> snd
 
                     (((cid, ap), InputPortNumber i), (inp, ap')))
 
@@ -528,20 +522,16 @@ let linkFastCustomComponentsToDriverArrays (fs: FastSimulation) (fid: FComponent
             let portNum =
                 ct.InputLabels
                 |> List.indexed
-                |> List.tryFind (fun (i, (lab, _)) -> (ComponentLabel lab = sc.Label))
-                |> Option.map fst
-                |> Option.defaultWith (fun () -> 
-                    failwithf "Input label '%A' not found in custom component '%s' input labels" sc.Label ct.Name)
+                |> List.find (fun (i, (lab, _)) -> (ComponentLabel lab = sc.Label))
+                |> fst
 
             fc.InputLinks[portNum] <- fs.FComps[cid, ap].Outputs[0]
         | Output w ->
             let portNum =
                 ct.OutputLabels
                 |> List.indexed
-                |> List.tryFind (fun (i, (lab, _)) -> ComponentLabel lab = sc.Label)
-                |> Option.map fst
-                |> Option.defaultWith (fun () -> 
-                    failwithf "Output label '%A' not found in custom component '%s' output labels" sc.Label ct.Name)
+                |> List.find (fun (i, (lab, _)) -> ComponentLabel lab = sc.Label)
+                |> fst
 
             fc.Outputs[portNum] <- fs.FComps[cid, ap].InputLinks[0]
         | _ -> ())

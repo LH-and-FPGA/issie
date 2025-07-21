@@ -482,9 +482,8 @@ module ReduceKeys =
     let compressLDC (name: string) (p:Project) =
         let r = Reducer.Init()
         let updateLdc (ldcs: LoadedComponent list) =
-            match List.tryFindIndex (fun ldc -> ldc.Name = name) ldcs with
-            | Some n -> List.updateAt n (r.ReduceLDC ldcs[n]) ldcs
-            | None -> ldcs
+            let n = List.findIndex (fun ldc -> ldc.Name = name) ldcs
+            List.updateAt n (r.ReduceLDC ldcs[n]) ldcs
         r.ScanProject p
         Optic.map loadedComponents_ updateLdc p
 
