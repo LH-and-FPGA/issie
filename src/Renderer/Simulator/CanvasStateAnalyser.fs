@@ -561,12 +561,14 @@ type CustomComponentError =
 let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (sheets: LoadedComponent list) =
     let inouts = args.InputLabels, args.OutputLabels
     let name = args.Name
-    let compare labs1 labs2 = (labs1 |> Set) = (labs2 |> Set)
+    // Compare only port names, not widths (widths can change due to parameters)
+    let comparePortNames labs1 labs2 = 
+        (labs1 |> List.map fst |> Set) = (labs2 |> List.map fst |> Set)
 
     sheets
     |> List.tryFind (fun sheet -> sheet.Name = name)
     |> Option.map (fun sheet ->
-        sheet, compare sheet.InputLabels args.InputLabels, compare sheet.OutputLabels args.OutputLabels)
+        sheet, comparePortNames sheet.InputLabels args.InputLabels, comparePortNames sheet.OutputLabels args.OutputLabels)
     |> function
         | None -> Error(c, NoSheet name)
         | Some(_, true, true) -> Ok()
