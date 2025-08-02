@@ -99,6 +99,8 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
             | NGateInputs ->
                 match comp.Type with
                 | GateN (_, n) -> n
+                | MergeN n -> n
+                | SplitN (n, _, _) -> n
                 | _ -> failwithf $"Invalid component {comp.Type} for gate inputs"
             | IO _ ->
                 match comp.Type with
@@ -111,6 +113,15 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                 0
             | SheetParam _ ->
                 failwithf $"Sheet parameters cannot be read from components"
+            | ParameterTypes.LsbBitNumber ->
+                match comp.Type with
+                | BusSelection (_, lsb) -> lsb
+                | _ -> failwithf $"Invalid component {comp.Type} for LSB bit number"
+            | ParameterTypes.DefaultValue ->
+                match comp.Type with
+                | Input1 (_, Some defValue) -> int defValue
+                | Input1 (_, None) -> 0
+                | _ -> failwithf $"Invalid component {comp.Type} for default value"
         )
         (fun value comp->
                 let newType = 
@@ -145,6 +156,8 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                     | NGateInputs ->
                         match comp.Type with
                         | GateN (gateType, _) -> GateN (gateType, value)
+                        | MergeN _ -> MergeN value
+                        | SplitN (_, widths, lsbs) -> SplitN (value, widths, lsbs)
                         | _ -> failwithf $"Invalid component {comp.Type} for gate inputs"
                     | IO _ ->
                         match comp.Type with
@@ -156,6 +169,14 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                         comp.Type
                     | SheetParam _ ->
                         failwithf $"Sheet parameters cannot be set on components"
+                    | ParameterTypes.LsbBitNumber ->
+                        match comp.Type with
+                        | BusSelection (width, _) -> BusSelection (width, value)
+                        | _ -> failwithf $"Invalid component {comp.Type} for LSB bit number"
+                    | ParameterTypes.DefaultValue ->
+                        match comp.Type with
+                        | Input1 (width, _) -> Input1 (width, Some (bigint value))
+                        | _ -> failwithf $"Invalid component {comp.Type} for default value"
                 { comp with Type = newType}
 )
 
@@ -281,14 +302,33 @@ let getLoadedComponent (sheetName: string option) (model: Model): LoadedComponen
 let getComponentById (model: Model) (sheetName: string) (compId: string): Component = 
     let project = Option.get model.CurrentProj
     
+    printfn $"DEBUG: getComponentById called with sheetName='{sheetName}', compId='{compId}'"
+    printfn $"DEBUG: project.OpenFileName='{project.OpenFileName}'"
+    
     // Need to use current sheet symbols if sheet is open, otherwise loaded component
     if sheetName = project.OpenFileName
-    then model.Sheet.GetComponentById <| ComponentId compId
+    then 
+        try
+            let comp = model.Sheet.GetComponentById <| ComponentId compId
+            printfn $"DEBUG: Found component on current sheet: {comp.Label}"
+            comp
+        with
+        | ex ->
+            printfn $"DEBUG: Error getting component from current sheet: {ex.Message}"
+            reraise()
     else
-        getLoadedComponent (Some sheetName) model
-        |> fun lc -> lc.CanvasState
-        |> fst
-        |> List.find (fun comp -> comp.Id = compId)
+        let lc = getLoadedComponent (Some sheetName) model
+        let (comps, _) = lc.CanvasState
+        printfn $"DEBUG: Looking in loaded component '{lc.Name}' with {comps.Length} components"
+        comps |> List.iter (fun c -> printfn $"DEBUG: Available component: {c.Id} ({c.Label})")
+        
+        match comps |> List.tryFind (fun comp -> comp.Id = compId) with
+        | Some comp -> 
+            printfn $"DEBUG: Found component in loaded component: {comp.Label}"
+            comp
+        | None ->
+            printfn $"DEBUG: Component {compId} not found in sheet {sheetName}"
+            failwithf $"Component {compId} not found in sheet {sheetName}"
 
 
 /// Check that an expression passes its constraints for a given set of bindings
@@ -328,6 +368,9 @@ let rec checkAllCompSlots
     (editedBindings: ParamBindings)
     : Result<Unit, ParamError> =
 
+    printfn $"DEBUG: checkAllCompSlots called for sheetName='{sheetName}'"
+    printfn $"DEBUG: editedBindings has {editedBindings.Count} entries"
+
     // Get bindings of sheet that component is on
     let toplevelLC = getLoadedComponent (Some sheetName) model
     let toplevelBindings = toplevelLC |> get defaultBindingsOfLC_ |> Option.defaultValue Map.empty
@@ -335,6 +378,7 @@ let rec checkAllCompSlots
 
     // Add detailed component information to constraint error messages
     let addDetailedErrorMsg (slot: ParamSlot) (spec: ConstrainedExpr): ConstrainedExpr =
+        printfn $"DEBUG: addDetailedErrorMsg called for slot CompId='{slot.CompId}', CompSlot='{slot.CompSlot}'"
         let renderedExpr = ParameterTypes.renderParamExpression spec.Expression 0
         let slotText =
             match slot.CompSlot with
@@ -342,17 +386,26 @@ let rec checkAllCompSlots
             | NGateInputs -> $"{renderedExpr} inputs"
             | CustomCompParam param -> $"parameter binding of {param} = {renderedExpr}"
             | SheetParam _ -> failwithf $"Sheet parameter cannot be slot in a component"
+            | ParameterTypes.LsbBitNumber -> $"LSB bit number of {renderedExpr}"
+            | ParameterTypes.DefaultValue -> $"default value of {renderedExpr}"
 
-        let comp = getComponentById model sheetName slot.CompId
-        let compInfo = $"{comp.Label} has {slotText}"
+        try
+            let comp = getComponentById model sheetName slot.CompId
+            let compInfo = $"{comp.Label} has {slotText}"
+            printfn $"DEBUG: Successfully created compInfo: {compInfo}"
 
-        let addDetail constr =
-            match constr with
-            | MaxVal (expr, err) -> MaxVal (expr, $"{compInfo}. {err}.")
-            | MinVal (expr, err) -> MinVal (expr, $"{compInfo}. {err}.")
+            let addDetail constr =
+                match constr with
+                | MaxVal (expr, err) -> MaxVal (expr, $"{compInfo}. {err}.")
+                | MinVal (expr, err) -> MinVal (expr, $"{compInfo}. {err}.")
 
-        let detailedConstraints = spec.Constraints |> List.map addDetail
-        {spec with Constraints = detailedConstraints}
+            let detailedConstraints = spec.Constraints |> List.map addDetail
+            {spec with Constraints = detailedConstraints}
+        with
+        | ex ->
+            printfn $"DEBUG: Error in addDetailedErrorMsg: {ex.Message}"
+            // Return original spec if component not found
+            spec
 
     // Check whether a param slot meets its constraints
     let checkSlot (slot: ParamSlot) (spec: ConstrainedExpr) = 
@@ -391,15 +444,29 @@ let rec checkAllCompSlots
         |> getLoadedComponent (Some sheetName)
         |> fun lc -> lc |> get paramSlotsOfLC_ |> Option.defaultValue Map.empty
 
+    printfn $"DEBUG: Found {paramSlots.Count} parameter slots"
+    paramSlots |> Map.iter (fun slot spec -> 
+        printfn $"DEBUG: ParamSlot - CompId: {slot.CompId}, CompSlot: {slot.CompSlot}, Expression: {ParameterTypes.renderParamExpression spec.Expression 0}")
+
     // Check all component slots for broken constraints, and return first error found
-    paramSlots
-    |> Map.map addDetailedErrorMsg
-    |> Map.map checkSlot
-    |> Map.valuesL
-    |> List.filter Result.isError
-    |> function
-        | [] -> Ok ()
-        | firstError :: _ -> firstError
+    let resultsWithErrorHandling =
+        paramSlots
+        |> Map.toList
+        |> List.map (fun (slot, spec) ->
+            try
+                let detailedSpec = addDetailedErrorMsg slot spec
+                let result = checkSlot slot detailedSpec
+                Some result
+            with
+            | ex ->
+                printfn $"DEBUG: Skipping slot {slot.CompId} due to error: {ex.Message}"
+                None)
+        |> List.choose id
+        |> List.filter Result.isError
+
+    match resultsWithErrorHandling with
+    | [] -> Ok ()
+    | firstError :: _ -> firstError
 
 
 /// Use sheet component update functions to perform updates
@@ -415,13 +482,35 @@ let updateComponent dispatch model slot value =
     | NGateInputs -> 
         match comp.Type with
         | GateN (gateType, _) -> model.Sheet.ChangeGate sheetDispatch compId gateType value
-        | _ -> failwithf $"Gate cannot have type {comp.Type}"
+        | MergeN _ -> model.Sheet.ChangeMergeN sheetDispatch compId value
+        | SplitN (_, widths, lsbs) -> 
+            // For SplitN, NGateInputs controls number of outputs
+            let changeWidths (widths: int list) (newNumInputs: int) (defaultVal: int) = 
+                match widths.Length with
+                | n when n > newNumInputs -> widths[..(newNumInputs-1)]
+                | n when n < newNumInputs -> List.append widths (List.init (newNumInputs-n) (fun _ -> defaultVal)) 
+                | _ -> widths
+            let changeLsbs (lsbs: int list) (widths: int list) (newNumInputs: int) = 
+                match lsbs.Length with
+                | n when n > newNumInputs -> lsbs[..(newNumInputs-1)]
+                | n when n < newNumInputs ->
+                    let msbs = List.map2 (fun lsb width -> lsb + width - 1) lsbs widths
+                    List.append lsbs (List.init (newNumInputs-n) (fun x -> x + (List.max msbs) + 1)) 
+                | _ -> lsbs
+            let newWidths = changeWidths widths value 1
+            let newLsbs = changeLsbs lsbs widths value
+            model.Sheet.ChangeSplitN sheetDispatch compId value newWidths newLsbs
+        | _ -> failwithf $"NGateInputs cannot be used with component type {comp.Type}"
     | CustomCompParam _ ->
         // Custom component parameters require special handling
         // TODO: updateCustomCompParam is defined later in file, handle this differently
         failwithf "Custom component parameters update not yet implemented in updateComponent"
     | SheetParam _ ->
         failwithf "Sheet parameters cannot be updated via updateComponent"
+    | ParameterTypes.LsbBitNumber ->
+        model.Sheet.ChangeLSB sheetDispatch compId (bigint value)
+    | ParameterTypes.DefaultValue ->
+        model.Sheet.ChangeInputValue sheetDispatch compId (bigint value)
 
     // Update most recent bus width
     match slot.CompSlot, comp.Type with
@@ -1415,6 +1504,8 @@ let private makeSlotsField (model: ModelType.Model) (comp:LoadedComponent) dispa
             | IO label -> $"Input/output {label}"
             | CustomCompParam param -> $"Parameter binding of {param}"
             | SheetParam _ -> failwithf $"Sheet parameter cannot be slot in a component"
+            | ParameterTypes.LsbBitNumber -> "LSB bit number"
+            | ParameterTypes.DefaultValue -> "Default value"
         
         let name = if Map.containsKey (ComponentId slot.CompId) model.Sheet.Wire.Symbol.Symbols then
                         string model.Sheet.Wire.Symbol.Symbols[ComponentId slot.CompId].Component.Label
