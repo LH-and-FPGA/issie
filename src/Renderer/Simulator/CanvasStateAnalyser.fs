@@ -605,7 +605,7 @@ type CustomComponentError =
 /// This three-tier approach ensures efficient processing while maintaining
 /// full parameter functionality where needed.
 /// </remarks>
-let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (sheets: LoadedComponent list) =
+let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (sheets: LoadedComponent list) (globalParams: ParameterTypes.ParamBindings option) =
     let inouts = args.InputLabels, args.OutputLabels
     let name = args.Name
     let compare labs1 labs2 = (labs1 |> Set) = (labs2 |> Set)
@@ -618,6 +618,7 @@ let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (she
         let resolvedInputs, resolvedOutputs = 
             match args.ParameterBindings, sheet.LCParameterSlots with
             | Some paramBindings, Some paramSlots when not (Map.isEmpty paramSlots.ParamSlots) ->
+                printfn $"Parameter resolution for {args.Name}: globalParams available = {globalParams.IsSome}"
                 // Simple inline parameter resolution for IO ports only
                 // This evaluator handles only the subset of expressions needed for I/O validation
                 //
@@ -634,7 +635,14 @@ let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (she
                 let rec eval expr =
                     match expr with
                     | PInt n -> Some n  // Integer constant - return its value
-                    | PParameter name -> Map.tryFind name paramBindings |> Option.bind eval  // Look up parameter and recursively evaluate
+                    | PParameter name -> 
+                        // First try local parameter bindings, then global parameters
+                        match Map.tryFind name paramBindings with
+                        | Some localExpr -> eval localExpr
+                        | None -> 
+                            globalParams
+                            |> Option.bind (Map.tryFind name)
+                            |> Option.bind eval
                     | _ -> None  // Complex expressions not supported in this context
                 
                 let (comps, conns) = sheet.CanvasState
@@ -671,7 +679,7 @@ let checkCustomComponentForOkIOs (c: Component) (args: CustomComponentType) (she
 /// Custom components have I/Os which are the same (names) as the I/Os in the corresponding sheet
 /// This can change if a sheet made into a custom component is edited
 /// We do this check whenever a new sheet is opened
-let checkCustomComponentsOk ((comps, _): CanvasState) (sheets: LoadedComponent list) : SimulationError option =
+let checkCustomComponentsOk ((comps, _): CanvasState) (sheets: LoadedComponent list) (globalParams: ParameterTypes.ParamBindings option) : SimulationError option =
     let error (c: Component) (t: SimulationErrorType) =
         Some
             { ErrType = t
@@ -687,7 +695,14 @@ let checkCustomComponentsOk ((comps, _): CanvasState) (sheets: LoadedComponent l
 
     comps
     |> List.collect (function
-        | { Type = Custom args } as c -> [ checkCustomComponentForOkIOs c args sheets ]
+        | { Type = Custom args } as c -> 
+            printfn $"Custom component found: Label={c.Label}, Name={args.Name}"
+            match args.ParameterBindings with
+            | None -> printfn $"  ParameterBindings: None"
+            | Some pb -> 
+                printfn $"  ParameterBindings: Some with {pb.Count} entries"
+                pb |> Map.iter (fun (ParamName k) v -> printfn $"    {k} -> {v}")
+            [ checkCustomComponentForOkIOs c args sheets globalParams ]
         | _ -> [])
     |> Helpers.tryFindError
     |> function
@@ -833,13 +848,15 @@ let checkComponentNamesAreOk ((comps, conns): CanvasState) =
 let analyseState
     (state: CanvasState)
     (ldComps: LoadedComponent list)
+    (globalParams: ParameterTypes.ParamBindings option)
     : SimulationError option * ConnectionsWidth option
     =
+    printfn $"analyseState called with globalParams: {globalParams.IsSome}"
     let widthErr, connectionsWidth = checkConnectionsWidths state
     [ checkPortTypesAreConsistent state
       checkPortsAreConnectedProperly state
       checkIOLabels state
-      checkCustomComponentsOk state ldComps
+      checkCustomComponentsOk state ldComps globalParams
       widthErr
       checkComponentNamesAreOk state
       checkAdderUnnecessaryNC state ]

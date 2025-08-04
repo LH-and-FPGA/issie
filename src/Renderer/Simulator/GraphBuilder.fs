@@ -359,7 +359,35 @@ let runCanvasStateChecksAndBuildGraph
     (loadedComponents: LoadedComponent list)
     : Result<SimulationGraph, SimulationError>
     =
-    match analyseState canvasState loadedComponents with
+    // We need to find the correct LoadedComponent that corresponds to the current canvasState
+    // The issue is that we need the global parameters from the sheet being processed, not just any sheet
+    printfn $"runCanvasStateChecksAndBuildGraph: Looking for global params among {loadedComponents.Length} components"
+    loadedComponents |> List.iteri (fun i ldc -> 
+        printfn $"  Component[{i}]: Name={ldc.Name}, HasParams={ldc.LCParameterSlots.IsSome}"
+        // Check if this component contains TEST2 (which should indicate it's main.dgm)
+        let (comps, _) = ldc.CanvasState
+        let hasTest2 = comps |> List.exists (fun comp -> comp.Label = "TEST2")
+        if hasTest2 then printfn $"    {ldc.Name} contains TEST2 component"
+        
+        ldc.LCParameterSlots |> Option.iter (fun ps ->
+            printfn $"    {ldc.Name} has {ps.DefaultBindings.Count} default bindings"
+            ps.DefaultBindings |> Map.iter (fun (ParameterTypes.ParamName k) v -> printfn $"      {k} = {v}")))
+    
+    // Collect all global parameters from all sheets and merge them
+    let globalParams = 
+        loadedComponents
+        |> List.choose (fun ldc -> ldc.LCParameterSlots |> Option.map (fun ps -> ps.DefaultBindings))
+        |> List.fold (fun acc paramMap -> Map.fold (fun m k v -> Map.add k v m) acc paramMap) Map.empty
+        |> function
+            | m when Map.isEmpty m -> None
+            | m -> Some m
+    
+    printfn $"runCanvasStateChecksAndBuildGraph: globalParams found: {globalParams.IsSome}"
+    globalParams |> Option.iter (fun gp -> 
+        printfn $"  Global parameters from correct sheet: {gp.Count} entries"
+        gp |> Map.iter (fun (ParameterTypes.ParamName k) v -> printfn $"    {k} = {v}"))
+    
+    match analyseState canvasState loadedComponents globalParams with
     | Some err, _ -> Error err
     | None, Some connectionsWidth ->
         let outputsWidth = findOutputWidths canvasState connectionsWidth

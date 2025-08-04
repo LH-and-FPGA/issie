@@ -536,7 +536,7 @@ let makeSimDataSelected (model:Model) : (Result<SimulationData,SimulationError> 
                 }
                 Some (Error e, (selComps,selConns))
             | Ok (correctComps,correctConns) ->
-                match CanvasStateAnalyser.analyseState (correctComps,correctConns) selLoadedComponents with
+                match CanvasStateAnalyser.analyseState (correctComps,correctConns) selLoadedComponents None with
                 | Some e, _ -> Some(Error e, (correctComps, correctConns))
                 | None, _ ->
                     let sim =

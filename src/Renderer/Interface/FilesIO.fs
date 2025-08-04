@@ -655,7 +655,10 @@ let makeLoadedComponentFromCanvasData (canvas: CanvasState) filePath timeStamp w
             Form = form
             Description = description
             LoadedComponentIsOutOfDate = false
-            LCParameterSlots = sheetInfo |> Option.bind (fun sI -> sI.ParameterDefinitions)
+            LCParameterSlots = 
+                sheetInfo |> Option.bind (fun sI -> 
+                    printfn $"Loading {getBaseNameNoExtension filePath}: sheetInfo.ParameterDefinitions = {sI.ParameterDefinitions.IsSome}"
+                    sI.ParameterDefinitions)
         }
     ldc, ramChanges
 

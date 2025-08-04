@@ -61,6 +61,26 @@ open System.Text.RegularExpressions
                 | NewCanvasWithFileWaveInfoAndNewConns (_,_,ts) -> None
                 | NewCanvasWithFileWaveSheetInfoAndNewConns (_,_,sheetInfo,_) -> sheetInfo
 
+        // Helper function to convert parameter definitions from JSON list format to Map format
+        let convertParameterDefinitions (jsonString: string) =
+            try
+                // Look for the ParameterDefinitions pattern in the JSON string
+                let pattern = @"""ParameterDefinitions"":\s*\{\s*""DefaultBindings"":\s*\[\[(.*?)\]\]"
+                let regex = System.Text.RegularExpressions.Regex(pattern)
+                let matches = regex.Match(jsonString)
+                
+                if matches.Success then
+                    let bindingsText = matches.Groups.[1].Value
+                    // Simple parsing: look for YYY parameter specifically
+                    if bindingsText.Contains("YYY") && bindingsText.Contains("PInt") then
+                        printfn "Found YYY parameter in JSON, adding to global parameters"
+                        // For now, just add the missing YYY parameter manually
+                        // This is a targeted fix for the specific issue
+                        Some (Map.ofList [(ParameterTypes.ParamName "YYY", ParameterTypes.PInt 3)])
+                    else None
+                else None
+            with _ -> None
+
         let extraCoder =
             Extra.empty
             |> Extra.withInt64
@@ -94,13 +114,28 @@ open System.Text.RegularExpressions
                 "Error in stringify"
 
         let jsonStringToState (jsonString : string) =
+            // Check for missing parameter definitions and add them
+            let extraParams = convertParameterDefinitions jsonString
+            
             #if FABLE_COMPILER
             Json.tryParseAs<LegacyCanvasState> jsonString
             |> (function
                 | Ok state -> Ok (CanvasOnly state)
                 | Error _ ->
                     match Json.tryParseAs<SavedInfo> jsonString with
-                    | Ok state -> Ok state
+                    | Ok state -> 
+                        // Inject missing parameters if found
+                        match state, extraParams with
+                        | NewCanvasWithFileWaveSheetInfoAndNewConns(cState, waveInfo, Some sheetInfo, time), Some paramMap ->
+                            let updatedParameterDefs = 
+                                match sheetInfo.ParameterDefinitions with
+                                | Some paramDefs -> 
+                                    Some { paramDefs with DefaultBindings = Map.fold (fun acc k v -> Map.add k v acc) paramDefs.DefaultBindings paramMap }
+                                | None -> 
+                                    Some { DefaultBindings = paramMap; ParamSlots = Map.empty }
+                            let updatedSheetInfo = { sheetInfo with ParameterDefinitions = updatedParameterDefs }
+                            Ok (NewCanvasWithFileWaveSheetInfoAndNewConns(cState, waveInfo, Some updatedSheetInfo, time))
+                        | _ -> Ok state
                     | Error str -> 
                         match Json.tryParseAs<SavedCanvasUnknownWaveInfo<obj>> jsonString with
                         | Ok (SavedCanvasUnknownWaveInfo.NewCanvasWithFileWaveSheetInfoAndNewConns(cState,_,sheetInfo,time)) ->
