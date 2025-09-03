@@ -30,6 +30,9 @@ open TopMenuView
 open MenuHelpers
 open SheetCreator
 open ParameterTypes
+open Optics
+open Optics.Operators
+open Optic
 
 NearleyBindings.importGrammar
 NearleyBindings.importFix
@@ -323,43 +326,90 @@ let private createGateNPopup (gateType: GateComponentType) (model: Model) dispat
 
 let private createMergeNPopup (model: Model) dispatch =
     let title = $"Add N input merge"
-    let beforeInt =
-        fun _ -> str "How many inputs should the merge component have?"
     let intDefault = 2
-    let body = dialogPopupBodyOnlyBoundedInt beforeInt intDefault 2 Constants.maxSplitMergeBranches dispatch
+    let constraints = [
+        MinVal (PInt 2, "Must have at least 2 inputs")
+        MaxVal (PInt Constants.maxSplitMergeBranches, $"Cannot have more than {Constants.maxSplitMergeBranches} inputs")
+    ]
+    
+    // Initialize dialog state for parameter spec
+    dispatch <| ClearPopupDialogParamSpec NGateInputs
+    
+    let body (model': Model) = 
+        div [] [
+            str "How many inputs should the merge component have?"
+            br []
+            ParameterView.paramInputField model' "Number of inputs" intDefault (Some intDefault) constraints None NGateInputs dispatch
+        ]
+    
     let buttonText = "Add"
     let buttonAction =
         fun (model': Model) ->
-            let dialogData = model'.PopupDialogData
-            let inputInt = getInt dialogData
-            createCompStdLabel (MergeN inputInt) None model dispatch
-            dispatch ClosePopup
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind NGateInputs paramSpecs with
+            | Some (Ok paramSpec) ->
+                let paramBindings = model' |> get ParameterView.defaultBindingsOfModel_ |> Option.defaultValue Map.empty
+                match ParameterTypes.evaluateParamExpression paramBindings paramSpec.Expression with
+                | Ok inputInt ->
+                    createCompStdLabel (MergeN inputInt) None model dispatch
+                    dispatch ClosePopup
+                | Error _ -> ()
+            | _ -> ()
+    
     let isDisabled =
         fun (model': Model) ->
-            let intIn = getInt model'.PopupDialogData
-            intIn < 2 || intIn > Constants.maxSplitMergeBranches
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind NGateInputs paramSpecs with
+            | Some (Ok _) -> false
+            | _ -> true
+    
     dialogPopup title body buttonText buttonAction isDisabled [] dispatch
 
 
 let private createSplitNPopup (model: Model) dispatch =
     let title = $"Add N output split"
-    let beforeInt =
-        fun _ -> str "How many outputs should the split component have?"
     let numInputsDefault = 2
-    let body = dialogPopupBodyNInts beforeInt numInputsDefault 1 Constants.maxSplitMergeBranches dispatch
+    let constraints = [
+        MinVal (PInt 2, "Must have at least 2 outputs")
+        MaxVal (PInt Constants.maxSplitMergeBranches, $"Cannot have more than {Constants.maxSplitMergeBranches} outputs")
+    ]
+    
+    // Initialize dialog state for parameter spec
+    dispatch <| ClearPopupDialogParamSpec NGateInputs
+    
+    let body (model': Model) = 
+        div [] [
+            str "How many outputs should the split component have?"
+            br []
+            ParameterView.paramInputField model' "Number of outputs" numInputsDefault (Some numInputsDefault) constraints None NGateInputs dispatch
+            br []
+            str "Note: Output widths and LSB positions will be configured after placement"
+        ]
+    
     let buttonText = "Add"
     let buttonAction =
         fun (model': Model) ->
-            let dialogData = model'.PopupDialogData
-            let outputInt = getInt dialogData 
-            let outputWidthList = getIntList dialogData numInputsDefault 1
-            let outputLSBList = getIntList2 dialogData numInputsDefault 0
-            createCompStdLabel (SplitN (outputInt, outputWidthList, outputLSBList)) None model dispatch
-            dispatch ClosePopup
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind NGateInputs paramSpecs with
+            | Some (Ok paramSpec) ->
+                let paramBindings = model' |> get ParameterView.defaultBindingsOfModel_ |> Option.defaultValue Map.empty
+                match ParameterTypes.evaluateParamExpression paramBindings paramSpec.Expression with
+                | Ok outputInt ->
+                    // Create default width and LSB lists
+                    let outputWidthList = List.init outputInt (fun _ -> 1)
+                    let outputLSBList = List.init outputInt (fun i -> i)
+                    createCompStdLabel (SplitN (outputInt, outputWidthList, outputLSBList)) None model dispatch
+                    dispatch ClosePopup
+                | Error _ -> ()
+            | _ -> ()
+    
     let isDisabled =
         fun (model': Model) ->
-            let intIn = getInt model'.PopupDialogData
-            intIn < 2 || intIn > Constants.maxSplitMergeBranches
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind NGateInputs paramSpecs with
+            | Some (Ok _) -> false
+            | _ -> true
+    
     dialogPopup title body buttonText buttonAction isDisabled [] dispatch
 
 
@@ -442,20 +492,43 @@ let private createNbitSpreaderPopup (model:Model) dispatch =
 
 let private createSplitWirePopup model dispatch =
     let title = sprintf "Add SplitWire node" 
-    let beforeInt =
-        fun _ -> str "How many bits should go to the top (LSB) wire? The remaining bits will go to the bottom (MSB) wire. \
-                      Use Edit -> Flip Vertically after placing component to swap top and bottom"
     let intDefault = 1
-    let body = dialogPopupBodyOnlyInt beforeInt intDefault dispatch
+    let constraints = [
+        MinVal (PInt 1, "Number of bits must be positive")
+    ]
+    
+    // Initialize dialog state for parameter spec
+    dispatch <| ClearPopupDialogParamSpec Buswidth
+    
+    let body (model': Model) = 
+        div [] [
+            str "How many bits should go to the top (LSB) wire? The remaining bits will go to the bottom (MSB) wire. \
+                 Use Edit -> Flip Vertically after placing component to swap top and bottom"
+            br []
+            ParameterView.paramInputField model' "Number of bits in top wire" intDefault (Some intDefault) constraints None Buswidth dispatch
+        ]
+    
     let buttonText = "Add"
     let buttonAction =
         fun (model': Model) ->
-            let dialogData = model'.PopupDialogData
-            let inputInt = getInt dialogData
-            createCompStdLabel (SplitWire inputInt) None model dispatch
-            dispatch ClosePopup
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind Buswidth paramSpecs with
+            | Some (Ok paramSpec) ->
+                let paramBindings = model' |> get ParameterView.defaultBindingsOfModel_ |> Option.defaultValue Map.empty
+                match ParameterTypes.evaluateParamExpression paramBindings paramSpec.Expression with
+                | Ok inputInt ->
+                    createCompStdLabel (SplitWire inputInt) None model dispatch
+                    dispatch ClosePopup
+                | Error _ -> ()
+            | _ -> ()
+    
     let isDisabled =
-        fun (model': Model) -> getInt model'.PopupDialogData < 1
+        fun (model': Model) ->
+            let paramSpecs = model'.PopupDialogData.DialogState |> Option.defaultValue Map.empty
+            match Map.tryFind Buswidth paramSpecs with
+            | Some (Ok _) -> false
+            | _ -> true
+    
     dialogPopup title body buttonText buttonAction isDisabled [] dispatch
 
 /// two react text lines in red

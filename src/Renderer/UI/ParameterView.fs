@@ -95,7 +95,9 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
             | NGateInputs ->
                 match comp.Type with
                 | GateN (_, n) -> n
-                | _ -> failwithf $"Invalid component {comp.Type} for gate inputs"
+                | MergeN n -> n
+                | SplitN (n, _, _) -> n
+                | _ -> failwithf $"Invalid component {comp.Type} for NGateInputs slot"
             | IO _ ->
                 match comp.Type with
                 | Input1 (busWidth, _) -> busWidth
@@ -112,6 +114,18 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                         | _ -> failwithf $"Parameter {paramName} not found in custom component {customComp.Name} bindings"
                     | None -> failwithf $"No parameter bindings found for custom component {customComp.Name}"
                 | _ -> failwithf $"CustomCompParam can only be used with Custom components, not {comp.Type}"
+            | SplitNWidth index ->
+                match comp.Type with
+                | SplitN (_, widths, _) -> 
+                    if index < List.length widths then widths[index]
+                    else failwithf $"SplitN width index {index} out of bounds"
+                | _ -> failwithf $"SplitNWidth can only be used with SplitN components, not {comp.Type}"
+            | SplitNLSB index ->
+                match comp.Type with
+                | SplitN (_, _, lsbs) -> 
+                    if index < List.length lsbs then lsbs[index]
+                    else failwithf $"SplitN LSB index {index} out of bounds"
+                | _ -> failwithf $"SplitNLSB can only be used with SplitN components, not {comp.Type}"
         )
         (fun value comp->
                 let newType = 
@@ -146,7 +160,9 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                     | NGateInputs ->
                         match comp.Type with
                         | GateN (gateType, _) -> GateN (gateType, value)
-                        | _ -> failwithf $"Invalid component {comp.Type} for gate inputs"
+                        | MergeN _ -> MergeN value
+                        | SplitN (_, widths, lsbs) -> SplitN (value, widths, lsbs)
+                        | _ -> failwithf $"Invalid component {comp.Type} for NGateInputs slot"
                     | IO _ ->
                         match comp.Type with
                         | Input1 (_, defaultValue) -> Input1 (value, defaultValue)
@@ -162,6 +178,18 @@ let compSlot_ (compSlotName:CompSlotName) : Optics.Lens<Component, int> =
                                 | None -> Map.ofList [(ParamName paramName, PInt value)]
                             Custom { customComp with ParameterBindings = Some newBindings }
                         | _ -> failwithf $"CustomCompParam can only be used with Custom components, not {comp.Type}"
+                    | SplitNWidth index ->
+                        match comp.Type with
+                        | SplitN (n, widths, lsbs) -> 
+                            let newWidths = widths |> List.mapi (fun i w -> if i = index then value else w)
+                            SplitN (n, newWidths, lsbs)
+                        | _ -> failwithf $"SplitNWidth can only be used with SplitN components, not {comp.Type}"
+                    | SplitNLSB index ->
+                        match comp.Type with
+                        | SplitN (n, widths, lsbs) -> 
+                            let newLsbs = lsbs |> List.mapi (fun i lsb -> if i = index then value else lsb)
+                            SplitN (n, widths, newLsbs)
+                        | _ -> failwithf $"SplitNLSB can only be used with SplitN components, not {comp.Type}"
                 { comp with Type = newType}
 )
 
@@ -305,7 +333,36 @@ let updateComponent dispatch model slot value =
     | NGateInputs -> 
         match comp.Type with
         | GateN (gateType, _) -> model.Sheet.ChangeGate sheetDispatch compId gateType value
-        | _ -> failwithf $"Gate cannot have type {comp.Type}"
+        | MergeN _ -> model.Sheet.ChangeMergeN sheetDispatch compId value
+        | SplitN (_, widths, lsbs) -> 
+            // For SplitN, maintain existing widths and LSBs when changing number of outputs
+            let newWidths = 
+                match widths.Length with
+                | n when n > value -> widths[..(value-1)]
+                | n when n < value -> List.append widths (List.init (value-n) (fun _ -> 1))
+                | _ -> widths
+            let newLsbs = 
+                match lsbs.Length with
+                | n when n > value -> lsbs[..(value-1)]
+                | n when n < value ->
+                    let msbs = List.map2 (fun lsb width -> lsb + width - 1) lsbs widths
+                    let nextLsb = if List.isEmpty msbs then 0 else (List.max msbs) + 1
+                    List.append lsbs (List.init (value-n) (fun x -> nextLsb + x))
+                | _ -> lsbs
+            model.Sheet.ChangeSplitN sheetDispatch compId value newWidths newLsbs
+        | _ -> failwithf $"NGateInputs slot cannot be used with component type {comp.Type}"
+    | SplitNWidth index ->
+        match comp.Type with
+        | SplitN (n, widths, lsbs) ->
+            let newWidths = widths |> List.mapi (fun i w -> if i = index then value else w)
+            model.Sheet.ChangeSplitN sheetDispatch compId n newWidths lsbs
+        | _ -> failwithf $"SplitNWidth slot can only be used with SplitN components"
+    | SplitNLSB index ->
+        match comp.Type with
+        | SplitN (n, widths, lsbs) ->
+            let newLsbs = lsbs |> List.mapi (fun i lsb -> if i = index then value else lsb)
+            model.Sheet.ChangeSplitN sheetDispatch compId n widths newLsbs
+        | _ -> failwithf $"SplitNLSB slot can only be used with SplitN components"
     | CustomCompParam paramName ->
         // For custom component parameters, we need to update the parameter bindings
         match comp.Type with
@@ -1128,6 +1185,8 @@ let private makeSlotsField (model: ModelType.Model) (comp:LoadedComponent) dispa
             | NGateInputs -> "Num inputs"
             | IO label -> $"Input/output {label}"
             | CustomCompParam paramName -> $"Custom parameter {paramName}"
+            | SplitNWidth index -> $"SplitN output {index} width"
+            | SplitNLSB index -> $"SplitN output {index} LSB"
         
         let name = if Map.containsKey (ComponentId slot.CompId) model.Sheet.Wire.Symbol.Symbols then
                         string model.Sheet.Wire.Symbol.Symbols[ComponentId slot.CompId].Component.Label

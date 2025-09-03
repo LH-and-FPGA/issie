@@ -26,6 +26,7 @@ open CatalogueView
 open TopMenuView
 open MenuHelpers
 open ParameterTypes
+open ParameterView
 
 open CatalogueView.Constants
 
@@ -507,15 +508,6 @@ let private makeNumberOfInputsField model (comp: Component) dispatch =
 let private changeMergeN model (comp:Component) dispatch =
     let sheetDispatch sMsg = dispatch (Sheet sMsg)
     
-    let errText =
-        model.PopupDialogData.Int
-        |> Option.map (fun i ->
-            if i < 2 || i > Constants.maxSplitMergeBranches then
-                sprintf $"Must have between 2 and {Constants.maxSplitMergeBranches} inputs"
-            else
-                "")
-        |> Option.defaultValue ""
-
     let title, nInp =
         match comp.Type with
         | MergeN n -> "Number of inputs", n
@@ -526,27 +518,12 @@ let private changeMergeN model (comp:Component) dispatch =
         MaxVal (PInt Constants.maxSplitMergeBranches, $"Cannot have more than {Constants.maxSplitMergeBranches} inputs")
     ]
 
-    div [] [
-        span
-            [Style [Color Red]]
-            [str errText]
-
-        ParameterView.paramInputField model title 2 (Some nInp) constraints (Some comp) NGateInputs dispatch
-    ]
+    ParameterView.paramInputField model title 2 (Some nInp) constraints (Some comp) NGateInputs dispatch
 
 
 let private changeSplitN model (comp:Component) dispatch =
     let sheetDispatch sMsg = dispatch (Sheet sMsg)
     
-    let errText =
-        model.PopupDialogData.Int
-        |> Option.map (fun i ->
-            if i < 2 || i > Constants.maxSplitMergeBranches then
-                sprintf $"Must have between 2 and {Constants.maxSplitMergeBranches} outputs"
-            else
-                "")
-        |> Option.defaultValue ""
-
     let title, nInp, widths, lsbs =
         match comp.Type with
         | SplitN (nInputs, widths, lsblist) -> "Number of outputs", nInputs, widths, lsblist
@@ -570,10 +547,6 @@ let private changeSplitN model (comp:Component) dispatch =
         | _ -> lsbs
 
     div [] [
-        span
-            [Style [Color Red]]
-            [str errText]
-
         let constraints = [
             MinVal (PInt 2, "Must have at least 2 outputs")
             MaxVal (PInt Constants.maxSplitMergeBranches, $"Cannot have more than {Constants.maxSplitMergeBranches} outputs")
@@ -594,19 +567,20 @@ let private changeSplitN model (comp:Component) dispatch =
                 match defaultWidth with
                 | n when n > 1 -> sprintf "(%d:%d)" (n+defaultLsb-1) defaultLsb
                 | _ -> sprintf "(%d)" defaultLsb
-            intFormField2 portTitle bits "60px" defaultWidth defaultLsb 1 0 
-                (fun newWidth -> 
-                    let neWidths = 
-                        widths
-                        |> List.mapi (fun i x -> if i = index then newWidth else x)
-                    model.Sheet.ChangeSplitN sheetDispatch (ComponentId comp.Id) nInp neWidths lsbs
-                    )
-                (fun lsb -> 
-                    let newLsbs = 
-                        lsbs
-                        |> List.mapi (fun i x -> if i = index then lsb else x)
-                    model.Sheet.ChangeSplitN sheetDispatch (ComponentId comp.Id) nInp widths newLsbs
-                    )
+            div [] [
+                Label.label [] [str portTitle]
+                Field.div [Field.Option.HasAddons] [
+                    // Width field with parameter support
+                    ParameterView.paramInputField model "Width" 1 (Some defaultWidth) 
+                        [MinVal (PInt 1, "Width must be positive")] 
+                        (Some comp) (SplitNWidth index) dispatch
+                    // LSB field with parameter support
+                    ParameterView.paramInputField model "LSB" 0 (Some defaultLsb) 
+                        [MinVal (PInt 0, "LSB must be non-negative")] 
+                        (Some comp) (SplitNLSB index) dispatch
+                ]
+                p [] [str bits]
+            ]
         ) widths lsbs
         |> div [Style [MarginBottom "20px"]] 
     ]
@@ -944,6 +918,8 @@ let private makeExtraInfo model (comp:Component) text dispatch : ReactElement =
             [
                 makeNumberOfInputsField model comp dispatch
             ]
+    | MergeWires ->
+        div [] [str "MergeWires automatically determines output width from connected inputs"]
     | MergeN _ -> 
         div []
             [
